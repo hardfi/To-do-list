@@ -1,9 +1,14 @@
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    entry: "./js/zadanie04.jsx",
+    entry: ["whatwg-fetch", "./js/app.jsx"],
     output: {
         filename: "./js/out.js"
+    },
+    devServer: {
+        inline: true,
+        contentBase: "./",
+        port: 3001
     },
 
     watch: true,
