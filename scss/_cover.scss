@@ -1,0 +1,70 @@
+
+.content {
+  @include bckg;
+}
+
+.cover {
+  @include bckg;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.hidden {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    z-index: -100;
+  }
+
+  .container_top {
+    @include border(10px);
+    font-family: $font;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: $box-backg;
+    width: 45%;
+    min-width: $min-width;
+    box-shadow: 0px 0px 30px 2px rgba(94,94,94,1);
+
+    h2 {
+      color: $font-color;
+      font-size: 48px;
+      margin: 20px;
+    }
+
+    p {
+      color: $font-color;
+      font-size: 26px;
+      margin: 20px auto;
+    }
+
+    h5 {
+      color: $font-color;
+      font-size: 32px;
+      margin: 20px;
+    }
+
+    #button_cover {
+      @include border(10px);
+      width: 175px;
+      height: 175px;
+      border-radius: 100%;
+      font-size: 120px;
+      margin: 30px;
+      font-weight: 900;
+
+      &:hover {
+        width: 171px;
+        height: 171px;
+        margin-top: 32px;
+        margin-bottom: 32px;
+        font-size: 116px;
+
+      }
+    }
+  }
+}

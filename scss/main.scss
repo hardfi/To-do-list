@@ -1,0 +1,11 @@
+@import "commons";
+@import "cover";
+@import "maincontainer";
+@import "table";
+
+.bottom_buttons {
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0;
+  left: 45%;
+}
