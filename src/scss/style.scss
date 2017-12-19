@@ -1,0 +1,36 @@
+// @import "commons";
+// @import "cover";
+// @import "maincontainer";
+// @import "table";
+//
+// .bottom_buttons {
+//   margin: 0 auto;
+//   position: absolute;
+//   bottom: 0;
+//   left: 45%;
+// }
+
+.form-inside{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+body {
+  background: url('../bckg.jpg');
+}
+
+// let buttonStyle {
+//   margin: '10px 0',
+//   width: '175px',
+//   height: '50px',
+//   backgroundColor: 'grey',
+//   display: 'flex',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+//   fontWeight: 700,
+//   fontSize: '24px',
+//   textTransform: 'uppercase',
+//   cursor: 'pointer'
+// }

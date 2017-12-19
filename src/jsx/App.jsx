@@ -1,6 +1,6 @@
-require('../scss/main.scss')
 import React from 'react';
 import ReactDOM from 'react-dom';
+//import '../scss/main.scss';
 
 let list = [
   {name: 'Kupić mleko', done: 'done', id: 2, urgent: 'urgent'},
@@ -53,7 +53,7 @@ class ToDoList extends React.Component{
   handleClickAdd = () => {
     let list = this.state.list;
 
-    if (list.length === 100) {
+    if (list.length === 20) {
       console.log('full!');
       this.setState({
         fullError: true
@@ -177,7 +177,7 @@ class ToDoList extends React.Component{
 
   render(){
     return (
-      <div>
+      <div className='main'>
         <AddTaskBar
           inputText={this.handleInput}
           addTask={this.handleClickAdd}
@@ -210,37 +210,23 @@ class ToDoList extends React.Component{
 
 class AddTaskBar extends React.Component{
   render(){
-    let buttonStyle = {
-      margin: '10px 0',
-      width: '175px',
-      height: '50px',
-      backgroundColor: 'grey',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      fontWeight: 700,
-      fontSize: '24px',
-      textTransform: 'uppercase',
-      cursor: 'pointer'
-    }
-
     return (
-      <div>
+      <div className='task-add'>
         <form>
-          <h2>New task:</h2>
-          <input
-            type='text'
-            onChange={this.props.inputText}
-            value={this.props.input}/>
-          <div
-            style={buttonStyle}
-            onClick={this.props.addTask}>
-            Dodaj</div>
-          <div
-            style={{width: '20px', height: '20px', backgroundColor: 'grey', cursor: 'pointer'}}
-            onClick={this.props.classToggle}
-            className={this.props.checkbox ? 'checked' : 'unchecked'}>
-            X</div>
+          <div className='form-inside'>
+            <h2>New task:</h2>
+            <input
+              type='text'
+              onChange={this.props.inputText}
+              value={this.props.input}/>
+            <div className='buttonAdd'
+              onClick={this.props.addTask}>
+              Dodaj</div>
+            <div className='checkbox'
+              onClick={this.props.classToggle}
+              className={this.props.checkbox ? 'checked' : 'unchecked'}>
+              X</div>
+          </div>
         </form>
       </div>
     )
@@ -267,9 +253,9 @@ class SingleTask extends React.Component{
     return (
       <li style={liStyle} key={task.id} className={`${task.done} ${task.urgent}`}>
         <h3>{task.name}</h3>
-        <div onClick={()=>this.props.clickDone(task.id)} style={buttonStyle}>Wykonane</div>
-        <div onClick={()=>this.props.clickDelete(task.id)} style={buttonStyle}>Usuń</div>
-        <div style={{width: '20px', height: '20px', backgroundColor: 'grey', cursor: 'pointer'}} onClick={()=>this.props.clickUrgent(task.id)}>X</div>
+        <div className='buttonDone' onClick={()=>this.props.clickDone(task.id)} style={buttonStyle}>Wykonane</div>
+        <div className='buttonDelete' onClick={()=>this.props.clickDelete(task.id)} style={buttonStyle}>Usuń</div>
+        <div className='checkboxUrgent' style={{width: '20px', height: '20px', backgroundColor: 'grey', cursor: 'pointer'}} onClick={()=>this.props.clickUrgent(task.id)}>X</div>
       </li>
     )
   }
@@ -286,7 +272,7 @@ class TableHead extends React.Component{
 
     if (this.props.list.length !== 0) {
       return (
-        <div>
+        <div className='tableHead'>
           <div onClick={this.props.sortByTitle} style={spanStyle}>Title</div>
           <div onClick={this.props.sortByDone} style={spanStyle}>Wykonane</div>
           <div onClick={this.props.sortByUrgent} style={spanStyle}>Ważne</div>

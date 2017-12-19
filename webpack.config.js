@@ -1,37 +1,47 @@
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+//FOR REACT
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    entry: ["whatwg-fetch", "./js/app.jsx"],
-    output: {
-        filename: "./js/out.js"
-    },
+    entry: ["whatwg-fetch","./src/jsx/App.jsx","./src/scss/style.scss"],
+    output: { filename: "./dist/js/out.js" },
     devServer: {
         inline: true,
-        contentBase: "./",
+        contentBase: './',
         port: 3001
     },
-
     watch: true,
-    devtool: 'source-map',
 
     module: {
-        loaders: [{
-            test: /\.jsx$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader',
-            query: {
-                presets: ['es2015', 'stage-2', 'react']}
-            }, {
-              test: /\.scss$/,
-              loader: ['style-loader', 'css-loader?url=false', 'sass-loader']
-              }
+        loaders: [
+            {
+                test: /\.jsx$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                query: { presets: ['es2015', 'stage-2', 'react'] }
+            },
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader?url=false', 'sass-loader']
+                })
+
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {}
+                    }
+                ]
+            }
         ]
     },
+    plugins: [
+        new ExtractTextPlugin('./dist/css/style.css')
 
-    // plugins: [
-    //     new UglifyJsPlugin({
-    //         sourceMap: true,
-    //         exclude: /node_modules/
-    //     })
-    // ]
+    ]
 };

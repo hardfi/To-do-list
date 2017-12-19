@@ -1,0 +1,8 @@
+.form-inside {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row; }
+
+body {
+  background: url("../bckg.jpg"); }
