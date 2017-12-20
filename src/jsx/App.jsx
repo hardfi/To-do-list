@@ -178,18 +178,21 @@ class ToDoList extends React.Component{
   render(){
     return (
       <div className='main'>
-        <AddTaskBar
-          inputText={this.handleInput}
-          addTask={this.handleClickAdd}
-          input={this.state.input}
-          classToggle={this.checkboxClassToggle}
-          checkbox={this.state.checkbox}/>
-        <TableHead
-          list={this.state.list}
-          sortByTitle={this.handleSortTitle}
-          sortByDone={this.handleSortDone}
-          sortByUrgent={this.handleSortUrgent}/>
-        <div>{this.state.input}</div>
+        <div className='paper'>
+          <div className='lefthand'>
+            <AddTaskBar
+              inputText={this.handleInput}
+              addTask={this.handleClickAdd}
+              input={this.state.input}
+              classToggle={this.checkboxClassToggle}
+              checkbox={this.state.checkbox}/>
+            <TableHead
+              list={this.state.list}
+              sortByTitle={this.handleSortTitle}
+              sortByDone={this.handleSortDone}
+              sortByUrgent={this.handleSortUrgent}/>
+          </div>
+        </div>
         <ul>
           {
             this.state.list.map(elem => {

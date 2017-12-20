@@ -10,27 +10,80 @@
 //   left: 45%;
 // }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  &::selection {
+    background: rgb(176, 176, 176);
+  }
+}
+
+body {
+  background: url('../152.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center right;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  #app {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+}
+
+
+.main {
+  display: flex;
+  position: absolute;
+  bottom: 200px;
+  left: calc(50% - 360px);
+
+  .paper {
+    background: url('../124.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 600px;
+    width: 500px;
+    transform: rotate(3deg);
+
+    .lefthand {
+      margin-top: 60px;
+
+      .task-add {
+
+
+        .buttonAdd {
+          width: 100px;
+          height: 30px;
+          text-transform: uppercase;
+          border: 1px solid black;
+          margin: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+ul {
+  margin-left: 80px;
+}
 .form-inside{
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
 }
-
-body {
-  background: url('../bckg.jpg');
-}
-
-// let buttonStyle {
-//   margin: '10px 0',
-//   width: '175px',
-//   height: '50px',
-//   backgroundColor: 'grey',
-//   display: 'flex',
-//   justifyContent: 'center',
-//   alignItems: 'center',
-//   fontWeight: 700,
-//   fontSize: '24px',
-//   textTransform: 'uppercase',
-//   cursor: 'pointer'
-// }
