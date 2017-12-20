@@ -221,20 +221,20 @@ class AddTaskBar extends React.Component{
       <div className='task-add'>
         <form>
           <div className='form-inside'>
-            <h2>New task:</h2>
+            <h2>nowe zadanie:</h2>
             <input
               type='text'
               onChange={this.props.inputText}
               value={this.props.input}/>
-            <div className='buttonAdd'
-              onClick={this.props.addTask}>
-              Dodaj</div>
-            <h4>Pilne:</h4>
+            <h2>Pilne:</h2>
             <div
               onClick={this.props.classToggle}
               className={this.props.checkbox ? 'checked' : 'unchecked'}>
               <div className='tick'></div>
             </div>
+            <div className='buttonAdd'
+              onClick={this.props.addTask}>
+              Dodaj</div>
           </div>
         </form>
       </div>

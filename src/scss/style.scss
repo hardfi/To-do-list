@@ -20,6 +20,22 @@
   }
 }
 
+.buttonAdd, .sort-buttons>div {
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  padding: 3px;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  width: 220px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
 body {
   background: url('../152.jpg');
   background-attachment: fixed;
@@ -53,9 +69,11 @@ body {
         background-position: center center;
         height: 600px;
         width: 350px;
-        transform: rotate(-10deg);
+        transform: rotate(-8deg);
         z-index: 10;
         position: relative;
+        user-select: none;
+        font-family: 'Roboto Condensed', sans-serif;
 
         .content {
           display: flex;
@@ -77,48 +95,41 @@ body {
 
               h2 {
                 text-transform: uppercase;
-                margin: 15px auto;
+                margin: 7px auto;
               }
 
               input {
-                border: none;
+                border: none; //2px solid rgba(255, 0, 0, 0.30);
                 font-size: 20px;
                 margin: 10px auto;
                 width: 220px;
+                background-color: rgba(255, 255, 255, 0.60);
+                padding: 3px;
+                font-family: 'Roboto Condensed', sans-serif;
+
+                &:focus {
+                  outline: none;
+                }
               }
 
               .buttonAdd {
-                width: 200px;
-                height: 40px;
-                text-transform: uppercase;
-                border: 2px solid white;
-                margin: 5px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-weight: 700;
-                font-size: 22px;
                 margin: 15px auto;
+                height: 40px;
+                font-size: 22px;
               }
 
-              h4 {
-                font-size: 20px;
-                width: 50%;
-                margin: 5px auto;
-                text-transform: uppercase;
+              .unchecked, .checked {
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+                border-radius: 100%;
               }
 
               .unchecked {
-                width: 20px;
-                height: 20px;
-                border-radius: 100%;
-                background-color: white;
+                background-color: rgba(255, 255, 255, 1);
               }
 
               .checked {
-                width: 20px;
-                height: 20px;
-                border-radius: 100%;
                 background-color: black;
                 box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255, 1);
               }
@@ -127,15 +138,12 @@ body {
         }
 
         .sort-buttons {
-          margin: 20px auto;
+          margin: 10px auto;
           text-transform: uppercase;
 
           div {
-            border: 2px solid white;
-            margin: 7px;
             font-size: 18px;
-            font-weight: 700px;
-
+            margin: 5px;
           }
         }
 
