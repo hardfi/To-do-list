@@ -178,34 +178,38 @@ class ToDoList extends React.Component{
   render(){
     return (
       <div className='main'>
-        <div className='paper'>
+        <div className='phone'>
           <div className='lefthand'>
-            <AddTaskBar
-              inputText={this.handleInput}
-              addTask={this.handleClickAdd}
-              input={this.state.input}
-              classToggle={this.checkboxClassToggle}
-              checkbox={this.state.checkbox}/>
-            <TableHead
-              list={this.state.list}
-              sortByTitle={this.handleSortTitle}
-              sortByDone={this.handleSortDone}
-              sortByUrgent={this.handleSortUrgent}/>
+            <div className='content'>
+              <AddTaskBar
+                inputText={this.handleInput}
+                addTask={this.handleClickAdd}
+                input={this.state.input}
+                classToggle={this.checkboxClassToggle}
+                checkbox={this.state.checkbox}/>
+              <TableHead
+                list={this.state.list}
+                sortByTitle={this.handleSortTitle}
+                sortByDone={this.handleSortDone}
+                sortByUrgent={this.handleSortUrgent}/>
+            </div>
           </div>
         </div>
-        <ul>
-          {
-            this.state.list.map(elem => {
-              return <SingleTask
-                task={elem}
-                key={elem.id}
-                clickDone={this.handleClickDone}
-                clickUrgent={this.handleCheckBox}
-                clickDelete={this.handleClickDelete}
-                edit={this.handleEdit}/>
-            })
-          }
-        </ul>
+          <div className='paper'>
+            <ul>
+              {
+                this.state.list.map(elem => {
+                  return <SingleTask
+                    task={elem}
+                    key={elem.id}
+                    clickDone={this.handleClickDone}
+                    clickUrgent={this.handleCheckBox}
+                    clickDelete={this.handleClickDelete}
+                    edit={this.handleEdit}/>
+                })
+              }
+            </ul>
+        </div>
       </div>
     )
   }
@@ -225,10 +229,12 @@ class AddTaskBar extends React.Component{
             <div className='buttonAdd'
               onClick={this.props.addTask}>
               Dodaj</div>
-            <div className='checkbox'
+            <h4>Pilne:</h4>
+            <div
               onClick={this.props.classToggle}
               className={this.props.checkbox ? 'checked' : 'unchecked'}>
-              X</div>
+              <div className='tick'></div>
+            </div>
           </div>
         </form>
       </div>
@@ -239,26 +245,15 @@ class AddTaskBar extends React.Component{
 class SingleTask extends React.Component{
 
   render(){
-    let buttonStyle = {
-      border: '1px solid black',
-      width: '100px',
-      cursor: 'pointer',
-      height: '20px',
-      margin: '10px'
-    };
-    let liStyle = {
-      display: 'flex',
-      alignItems: 'center'
-    }
 
   let task = this.props.task;
 
     return (
-      <li style={liStyle} key={task.id} className={`${task.done} ${task.urgent}`}>
+      <li key={task.id} className={`${task.done} ${task.urgent}`}>
         <h3>{task.name}</h3>
-        <div className='buttonDone' onClick={()=>this.props.clickDone(task.id)} style={buttonStyle}>Wykonane</div>
-        <div className='buttonDelete' onClick={()=>this.props.clickDelete(task.id)} style={buttonStyle}>Usuń</div>
-        <div className='checkboxUrgent' style={{width: '20px', height: '20px', backgroundColor: 'grey', cursor: 'pointer'}} onClick={()=>this.props.clickUrgent(task.id)}>X</div>
+        <div className='buttonDone' onClick={()=>this.props.clickDone(task.id)} >Wykonane</div>
+        <div className='buttonDelete' onClick={()=>this.props.clickDelete(task.id)} >Usuń</div>
+        <div className='checkboxUrgent' onClick={()=>this.props.clickUrgent(task.id)}>X</div>
       </li>
     )
   }
@@ -266,19 +261,14 @@ class SingleTask extends React.Component{
 
 class TableHead extends React.Component{
   render(){
-    let spanStyle = {
-      margin: '10px 10px',
-      border: '1px solid black',
-      padding: '10px',
-      cursor: 'pointer'
-    }
 
     if (this.props.list.length !== 0) {
       return (
-        <div className='tableHead'>
-          <div onClick={this.props.sortByTitle} style={spanStyle}>Title</div>
-          <div onClick={this.props.sortByDone} style={spanStyle}>Wykonane</div>
-          <div onClick={this.props.sortByUrgent} style={spanStyle}>Ważne</div>
+        <div className='sort-buttons'>
+          <h3>Sortuj zadania:</h3>
+          <div onClick={this.props.sortByTitle} >Nazwa</div>
+          <div onClick={this.props.sortByDone} >Wykonane</div>
+          <div onClick={this.props.sortByUrgent} >Ważne</div>
         </div>
       )
     } else {

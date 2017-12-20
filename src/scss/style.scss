@@ -37,53 +37,124 @@ body {
     height: 100%;
     margin: 0 auto;
     position: relative;
-  }
-}
 
 
-.main {
-  display: flex;
-  position: absolute;
-  bottom: 200px;
-  left: calc(50% - 360px);
+    .main {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-right: 1%;
+      margin-top: 1%;
 
-  .paper {
-    background: url('../124.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    height: 600px;
-    width: 500px;
-    transform: rotate(3deg);
+      .lefthand {
+        background: url('../../dist/cell.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 600px;
+        width: 350px;
+        transform: rotate(-10deg);
+        z-index: 10;
+        position: relative;
 
-    .lefthand {
-      margin-top: 60px;
-
-      .task-add {
-
-
-        .buttonAdd {
-          width: 100px;
-          height: 30px;
-          text-transform: uppercase;
-          border: 1px solid black;
-          margin: 5px;
+        .content {
           display: flex;
-          justify-content: center;
           align-items: center;
-          font-weight: 700;
+          flex-direction: column;
+          width: 300px;
+          padding-top: 100px;
+          padding-left: 40px;
+          text-align: center;
+          color: white;
+
+          .task-add {
+
+            .form-inside {
+              display: flex;
+              align-items: center;
+              flex-direction: column;
+
+
+              h2 {
+                text-transform: uppercase;
+                margin: 15px auto;
+              }
+
+              input {
+                border: none;
+                font-size: 20px;
+                margin: 10px auto;
+                width: 220px;
+              }
+
+              .buttonAdd {
+                width: 200px;
+                height: 40px;
+                text-transform: uppercase;
+                border: 2px solid white;
+                margin: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: 700;
+                font-size: 22px;
+                margin: 15px auto;
+              }
+
+              h4 {
+                font-size: 20px;
+                width: 50%;
+                margin: 5px auto;
+                text-transform: uppercase;
+              }
+
+              .unchecked {
+                width: 20px;
+                height: 20px;
+                border-radius: 100%;
+                background-color: white;
+              }
+
+              .checked {
+                width: 20px;
+                height: 20px;
+                border-radius: 100%;
+                background-color: black;
+                box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255, 1);
+              }
+            }
+          }
         }
+
+        .sort-buttons {
+          margin: 20px auto;
+          text-transform: uppercase;
+
+          div {
+            border: 2px solid white;
+            margin: 7px;
+            font-size: 18px;
+            font-weight: 700px;
+
+          }
+        }
+
+
+
+      }
+
+      .paper {
+        position: relative;
+        background: url('../124.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 850px;
+        width: 650px;
+        transform: rotate(3deg);
+        margin-left: -110px;
+        z-index: 0;
       }
     }
   }
-}
-
-ul {
-  margin-left: 80px;
-}
-.form-inside{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
