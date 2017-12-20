@@ -187,7 +187,7 @@ class ToDoList extends React.Component{
                 input={this.state.input}
                 classToggle={this.checkboxClassToggle}
                 checkbox={this.state.checkbox}/>
-              <TableHead
+              <SortButtons
                 list={this.state.list}
                 sortByTitle={this.handleSortTitle}
                 sortByDone={this.handleSortDone}
@@ -196,19 +196,22 @@ class ToDoList extends React.Component{
           </div>
         </div>
           <div className='paper'>
-            <ul>
-              {
-                this.state.list.map(elem => {
-                  return <SingleTask
-                    task={elem}
-                    key={elem.id}
-                    clickDone={this.handleClickDone}
-                    clickUrgent={this.handleCheckBox}
-                    clickDelete={this.handleClickDelete}
-                    edit={this.handleEdit}/>
-                })
-              }
-            </ul>
+            <div className='content'>
+              <h2>Lista zadań</h2>
+              <ul>
+                {
+                  this.state.list.map(elem => {
+                    return <SingleTask
+                      task={elem}
+                      key={elem.id}
+                      clickDone={this.handleClickDone}
+                      clickUrgent={this.handleCheckBox}
+                      clickDelete={this.handleClickDelete}
+                      edit={this.handleEdit}/>
+                  })
+                }
+              </ul>
+            </div>
         </div>
       </div>
     )
@@ -226,7 +229,7 @@ class AddTaskBar extends React.Component{
               type='text'
               onChange={this.props.inputText}
               value={this.props.input}/>
-            <h2>Pilne:</h2>
+            <h2>Pilne?</h2>
             <div
               onClick={this.props.classToggle}
               className={this.props.checkbox ? 'checked' : 'unchecked'}>
@@ -250,16 +253,17 @@ class SingleTask extends React.Component{
 
     return (
       <li key={task.id} className={`${task.done} ${task.urgent}`}>
-        <h3>{task.name}</h3>
-        <div className='buttonDone' onClick={()=>this.props.clickDone(task.id)} >Wykonane</div>
-        <div className='buttonDelete' onClick={()=>this.props.clickDelete(task.id)} >Usuń</div>
-        <div className='checkboxUrgent' onClick={()=>this.props.clickUrgent(task.id)}>X</div>
+        <h3 className='button-done' onClick={()=>this.props.clickDone(task.id)}>- {task.name}</h3>
+        <div className='buttons'>
+          <h5 className='button-urgent' onClick={()=>this.props.clickUrgent(task.id)}>ważne!</h5>
+          <h5 className='button-delete' onClick={()=>this.props.clickDelete(task.id)}>usuń</h5>
+        </div>
       </li>
     )
   }
 }
 
-class TableHead extends React.Component{
+class SortButtons extends React.Component{
   render(){
 
     if (this.props.list.length !== 0) {
@@ -280,6 +284,17 @@ class TableHead extends React.Component{
 class App extends React.Component{
   render(){
     return <ToDoList list={list} />
+  }
+}
+
+class ChangeBackground extends React.Component{
+  render(){
+    let counter = 222;
+  //  let image = `../../dist/${counter}.jpeg`;
+    console.log(counter);
+    return (
+      <div>em</div>
+    )
   }
 }
 
