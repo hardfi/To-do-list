@@ -10,7 +10,9 @@
   },
   "author": "Dariusz Luber",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "react-flip-move": "^2.10.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

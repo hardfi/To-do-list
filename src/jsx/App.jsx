@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import FlipMove from 'react-flip-move';
 
 let counterName = 0,
     counterDone = 0,
@@ -222,20 +223,22 @@ class ToDoList extends React.Component{
             <div className='content'>
               <h2>Lista zadań</h2>
               <ul>
-                {
-                  this.state.list.map(elem => {
-                    return <SingleTask
-                      task={elem}
-                      key={elem.id}
-                      clickDone={this.handleClickDone}
-                      clickUrgent={this.handleCheckBox}
-                      clickDelete={this.handleClickDelete}/>
-                  })
-                }
+                <FlipMove duration={750} easing="ease-out">
+                  {
+                    this.state.list.map(elem => {
+                      return <SingleTask
+                        task={elem}
+                        key={elem.id}
+                        clickDone={this.handleClickDone}
+                        clickUrgent={this.handleCheckBox}
+                        clickDelete={this.handleClickDelete}/>
+                    })
+                  }
+                </FlipMove>
               </ul>
             </div>
+          </div>
         </div>
-      </div>
       )
     }
   }
@@ -269,7 +272,7 @@ class AddTaskBar extends React.Component{
               onChange={this.props.inputText}
               value={this.props.input}
               onKeyPress={e => this.props.enterKeyPress(e)}/>
-            <h2>Pilne?</h2>
+            <h2>ważne?</h2>
             <div
               onClick={this.props.classToggle}
               className={this.props.checkbox ? 'checked' : 'unchecked'}>
