@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import '../scss/main.scss';
 
 let list = [
   {name: 'Kupić mleko', done: 'done', id: 2, urgent: 'urgent'},
@@ -20,7 +19,8 @@ class ToDoList extends React.Component{
       input: '',
       inputError: false,
       checkbox: false,
-      fullError: false
+      fullError: false,
+      imageNumber: 221
     }
   }
 
@@ -171,13 +171,23 @@ class ToDoList extends React.Component{
     })
   }
 
-  handleEdit = (taskId) => {
-
+  handleBackgroundChange = () => {
+    let counter = this.state.imageNumber;
+    counter++;
+    counter === 226 ? counter = 221 : false;
+    this.setState({
+      imageNumber: counter
+    })
   }
 
   render(){
+
+
+
     return (
-      <div className='main'>
+      <div className='main' style={{
+        background: `url(../../dist/${this.state.imageNumber}.jpg) right center / cover no-repeat fixed`
+      }}>
         <div className='phone'>
           <div className='lefthand'>
             <div className='content'>
@@ -191,7 +201,8 @@ class ToDoList extends React.Component{
                 list={this.state.list}
                 sortByTitle={this.handleSortTitle}
                 sortByDone={this.handleSortDone}
-                sortByUrgent={this.handleSortUrgent}/>
+                sortByUrgent={this.handleSortUrgent}
+                backgroundChange={this.handleBackgroundChange}/>
             </div>
           </div>
         </div>
@@ -266,13 +277,14 @@ class SingleTask extends React.Component{
 class SortButtons extends React.Component{
   render(){
 
-    if (this.props.list.length !== 0) {
+    if (this.props.list.length > 1) {
       return (
         <div className='sort-buttons'>
           <h3>Sortuj zadania:</h3>
           <div onClick={this.props.sortByTitle} >Nazwa</div>
           <div onClick={this.props.sortByDone} >Wykonane</div>
           <div onClick={this.props.sortByUrgent} >Ważne</div>
+          <div className='secretButton' onClick={this.props.backgroundChange} ></div>
         </div>
       )
     } else {
@@ -287,22 +299,9 @@ class App extends React.Component{
   }
 }
 
-class ChangeBackground extends React.Component{
-  render(){
-    let counter = 222;
-  //  let image = `../../dist/${counter}.jpeg`;
-    console.log(counter);
-    return (
-      <div>em</div>
-    )
-  }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         <App />,
         document.getElementById('app')
     );
 });
-
-// contentEditable

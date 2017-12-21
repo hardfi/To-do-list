@@ -1,15 +1,3 @@
-// @import "commons";
-// @import "cover";
-// @import "maincontainer";
-// @import "table";
-//
-// .bottom_buttons {
-//   margin: 0 auto;
-//   position: absolute;
-//   bottom: 0;
-//   left: 45%;
-// }
-
 * {
   padding: 0;
   margin: 0;
@@ -44,15 +32,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-
-      background: url('../221.jpg');
-      background-attachment: fixed;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center right;
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
 
@@ -138,6 +118,14 @@ body {
           div {
             font-size: 18px;
             margin: 5px;
+          }
+
+          .secretButton {
+            background-color: transparent;
+            width: 22px;
+            height: 22px;
+            margin: 43px auto 5px;
+            border-radius: 100%
           }
         }
       }
