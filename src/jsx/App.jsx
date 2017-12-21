@@ -15,15 +15,27 @@ class ToDoList extends React.Component{
       inputError: false,
       checkbox: false,
       fullError: false,
-      imageNumber: 221
+      imageNumber: 221,
+      weather: ''
     }
   }
 
   componentWillMount() {
     let list = JSON.parse(localStorage.getItem('list')) || [];
-      this.setState({
-        list: list
-      });
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${this.props.city}&appid=e79ae7fdae604a770d5aad5b8daea200`;
+
+    console.log(url);
+
+    this.setState({
+      list: list
+    });
+
+    fetch(url).then(resp => {
+                  return resp.json();
+             }).then(data => {
+                  return this.setState({weather: data.coord.lon})
+             }).catch(err => console.log(err))
+               // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
   }
 
   componentDidUpdate() {
@@ -220,10 +232,11 @@ class ToDoList extends React.Component{
           </div>
         </div>
           <div className='paper'>
+            <div>{this.state.weather}</div>
             <div className='content'>
               <h2>Lista zadań</h2>
               <ul>
-                <FlipMove duration={750} easing="ease-out">
+                <FlipMove duration={500} easing="ease-out">
                   {
                     this.state.list.map(elem => {
                       return <SingleTask
@@ -327,7 +340,7 @@ class SortButtons extends React.Component{
 
 class App extends React.Component{
   render(){
-    return <ToDoList />
+    return <ToDoList city="Wroclaw"/>
   }
 }
 

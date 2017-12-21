@@ -8,6 +8,16 @@
   }
 }
 
+@keyframes appear {
+  from {visibility: hidden; opacity: 0}
+  to {visibility: visible; opacity: 1}
+}
+
+@keyframes disappear {
+  from {visibility: hidden; opacity: 0}
+  to {visibility: visible; opacity: 1}
+}
+
 .buttonAdd, .sort-buttons>div {
   text-transform: uppercase;
   display: flex;
@@ -36,6 +46,8 @@ body {
       width: 100%;
       min-height: 100vh;
       padding-bottom: 20px;
+      animation-name: appear;
+      animation-duration: 1s;
 
       .lefthand {
         background: url('../../dist/cell.png');
@@ -69,21 +81,24 @@ body {
               position: relative;
 
               .noerror {
-                visibility: hidden;
                 position: absolute;
+                opacity: 0;
+                transition: opacity 0.5s linear;
               }
 
               .error {
                 position: absolute;
                 top: -17px;
                 left: -20px;
-                visibility: visible;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 background-color: black;
                 height: 50px;
                 width: 264px;
+                visibility: visible;
+                opacity: 1;
+                transition: opacity 0.5s linear;
               }
 
               span {
