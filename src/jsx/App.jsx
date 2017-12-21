@@ -1,12 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-let list = [
-  {name: 'Kupić mleko', done: 'done', id: 2, urgent: 'urgent'},
-  {name: 'Nauczyć się Reacta', done: '', id: 4, urgent: ''},
-  {name: 'Zrobić pranie', done: 'done', id: 3, urgent: 'urgent'},
-  {name: 'Ale śniadanie', done: '', id: 1, urgent: ''},
-];
 let counterName = 0,
     counterDone = 0,
     counterUrgent = 0;
@@ -15,13 +9,25 @@ class ToDoList extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      list: this.props.list,
+      list: [],
       input: '',
       inputError: false,
       checkbox: false,
       fullError: false,
       imageNumber: 221
     }
+  }
+
+  componentWillMount() {
+    let list = JSON.parse(localStorage.getItem('list')) || [];
+      this.setState({
+        list: list
+      });
+  }
+
+  componentDidUpdate() {
+    let list = this.state.list;
+    localStorage.setItem('list', JSON.stringify(list));
   }
 
   listSort = (key, counter) => {
@@ -53,14 +59,14 @@ class ToDoList extends React.Component{
   handleClickAdd = () => {
     let list = this.state.list;
 
-    if (list.length === 20) {
+    if (list.length === 10) {
       console.log('full!');
       this.setState({
         fullError: true
       })
     } else {
 
-      if (this.state.input.length < 3 || this.state.input.length > 50) {
+      if (this.state.input.length < 4 || this.state.input.length > 50) {
         this.setState({
           inputError: true
         })
@@ -77,7 +83,7 @@ class ToDoList extends React.Component{
           name: this.state.input,
           done: '',
           id: Date.now(),
-          checkbox: checkbox
+          urgent: checkbox
         };
 
         list.push(newTask);
@@ -180,10 +186,14 @@ class ToDoList extends React.Component{
     })
   }
 
+  handleEnterKey = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      this.handleClickAdd();
+    }
+  }
+
   render(){
-
-
-
     return (
       <div className='main' style={{
         background: `url(../../dist/${this.state.imageNumber}.jpg) right center / cover no-repeat fixed`
@@ -196,7 +206,9 @@ class ToDoList extends React.Component{
                 addTask={this.handleClickAdd}
                 input={this.state.input}
                 classToggle={this.checkboxClassToggle}
-                checkbox={this.state.checkbox}/>
+                checkbox={this.state.checkbox}
+                enterKeyPress={this.handleEnterKey}
+                inputError={this.state.inputError}/>
               <SortButtons
                 list={this.state.list}
                 sortByTitle={this.handleSortTitle}
@@ -217,29 +229,46 @@ class ToDoList extends React.Component{
                       key={elem.id}
                       clickDone={this.handleClickDone}
                       clickUrgent={this.handleCheckBox}
-                      clickDelete={this.handleClickDelete}
-                      edit={this.handleEdit}/>
+                      clickDelete={this.handleClickDelete}/>
                   })
                 }
               </ul>
             </div>
         </div>
       </div>
-    )
+      )
+    }
   }
-}
 
 class AddTaskBar extends React.Component{
   render(){
+
+    let spanClass = 'wrong';
+    if (this.props.input.length < 4 || this.props.input.length > 50) {
+      spanClass = 'wrong';
+    } else {
+      spanClass = 'right';
+    }
+
+    let errorClass = '';
+    if (this.props.inputError) {
+      errorClass = "error";
+    } else {
+      errorClass = "noerror";
+    }
+
     return (
       <div className='task-add'>
         <form>
           <div className='form-inside'>
+            <div className={errorClass}>Zadanie musi mieć od 4 do 50 znaków.</div>
+            <span className={spanClass}>{this.props.input.length}</span>
             <h2>nowe zadanie:</h2>
             <input
               type='text'
               onChange={this.props.inputText}
-              value={this.props.input}/>
+              value={this.props.input}
+              onKeyPress={e => this.props.enterKeyPress(e)}/>
             <h2>Pilne?</h2>
             <div
               onClick={this.props.classToggle}
@@ -295,7 +324,7 @@ class SortButtons extends React.Component{
 
 class App extends React.Component{
   render(){
-    return <ToDoList list={list} />
+    return <ToDoList />
   }
 }
 
