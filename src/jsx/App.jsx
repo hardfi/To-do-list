@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FlipMove from 'react-flip-move';
+import Slider from 'react-slick';
 
 let counterName = 0,
     counterDone = 0,
@@ -72,7 +73,7 @@ class ToDoList extends React.Component{
   handleClickAdd = () => {
     let list = this.state.list;
 
-    if (list.length === 10) {
+    if (list.length === 8) {
       console.log('full!');
       this.setState({
         fullError: true
@@ -213,26 +214,49 @@ class ToDoList extends React.Component{
       }}>
         <div className='phone'>
           <div className='lefthand'>
-            <div className='content'>
-              <AddTaskBar
-                inputText={this.handleInput}
-                addTask={this.handleClickAdd}
-                input={this.state.input}
-                classToggle={this.checkboxClassToggle}
-                checkbox={this.state.checkbox}
-                enterKeyPress={this.handleEnterKey}
-                inputError={this.state.inputError}/>
-              <SortButtons
-                list={this.state.list}
-                sortByTitle={this.handleSortTitle}
-                sortByDone={this.handleSortDone}
-                sortByUrgent={this.handleSortUrgent}
-                backgroundChange={this.handleBackgroundChange}/>
-            </div>
+
+            <ul>
+              <li>
+                <div className='content'>
+                  <AddTaskBar
+                    inputText={this.handleInput}
+                    addTask={this.handleClickAdd}
+                    input={this.state.input}
+                    classToggle={this.checkboxClassToggle}
+                    checkbox={this.state.checkbox}
+                    enterKeyPress={this.handleEnterKey}
+                    inputError={this.state.inputError}/>
+                  <SortButtons
+                    list={this.state.list}
+                    sortByTitle={this.handleSortTitle}
+                    sortByDone={this.handleSortDone}
+                    sortByUrgent={this.handleSortUrgent}
+                    backgroundChange={this.handleBackgroundChange}/>
+                </div>
+              </li>
+              <li>
+                <div className='content'>
+                  <AddTaskBar
+                    inputText={this.handleInput}
+                    addTask={this.handleClickAdd}
+                    input={this.state.input}
+                    classToggle={this.checkboxClassToggle}
+                    checkbox={this.state.checkbox}
+                    enterKeyPress={this.handleEnterKey}
+                    inputError={this.state.inputError}/>
+                  <SortButtons
+                    list={this.state.list}
+                    sortByTitle={this.handleSortTitle}
+                    sortByDone={this.handleSortDone}
+                    sortByUrgent={this.handleSortUrgent}
+                    backgroundChange={this.handleBackgroundChange}/>
+                </div>
+              </li>
+            </ul>
+
           </div>
         </div>
           <div className='paper'>
-            <div>{this.state.weather}</div>
             <div className='content'>
               <h2>Lista zadań</h2>
               <ul>
@@ -324,12 +348,17 @@ class SortButtons extends React.Component{
 
     if (this.props.list.length > 1) {
       return (
-        <div className='sort-buttons'>
-          <h3>Sortuj zadania:</h3>
-          <div onClick={this.props.sortByTitle} >Nazwa</div>
-          <div onClick={this.props.sortByDone} >Wykonane</div>
-          <div onClick={this.props.sortByUrgent} >Ważne</div>
-          <div className='secretButton' onClick={this.props.backgroundChange} ></div>
+        <div>
+          <div className='sort-buttons'>
+            <h3>Sortuj zadania:</h3>
+            <div className='buttonRegural' onClick={this.props.sortByTitle} >Nazwa</div>
+            <div className='buttonRegural' onClick={this.props.sortByDone} >Wykonane</div>
+            <div className='buttonRegural' onClick={this.props.sortByUrgent} >Ważne</div>
+          </div>
+          <div className='secretButtons'>
+            <div className='secretOne' onClick={this.props.slide} ></div>
+            <div className='secretTwo' onClick={this.props.backgroundChange} ></div>
+          </div>
         </div>
       )
     } else {
@@ -338,9 +367,35 @@ class SortButtons extends React.Component{
   }
 }
 
+class SimpleSlider extends React.Component {
+  render(){
+
+      var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+      return (
+        <Slider {...settings}>
+          <li><img src='../../dist/221.jpg' /></li>
+          <li><img src='../../dist/222.jpg' /></li>
+          <li><img src='../../dist/223.jpg' /></li>
+        </Slider>
+      );
+    }
+  }
+
 class App extends React.Component{
   render(){
-    return <ToDoList city="Wroclaw"/>
+    return (
+      <div>
+        <ToDoList city="Wroclaw"/>
+        <SimpleSlider />
+      </div>
+    )
+
   }
 }
 

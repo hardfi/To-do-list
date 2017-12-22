@@ -11,7 +11,9 @@
   "author": "Dariusz Luber",
   "license": "ISC",
   "dependencies": {
-    "react-flip-move": "^2.10.0"
+    "react-flip-move": "^2.10.0",
+    "react-slick": "^0.16.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
