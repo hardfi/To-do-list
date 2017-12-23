@@ -248,8 +248,10 @@ class ToDoList extends React.Component{
                     list={this.state.list}
                     sortByTitle={this.handleSortTitle}
                     sortByDone={this.handleSortDone}
-                    sortByUrgent={this.handleSortUrgent}
-                    backgroundChange={this.handleBackgroundChange}/>
+                    sortByUrgent={this.handleSortUrgent}/>
+                  <SecretButtons
+                    backgroundChange={this.handleBackgroundChange} />
+                    
                 </div>
               </li>
             </ul>
@@ -348,22 +350,27 @@ class SortButtons extends React.Component{
 
     if (this.props.list.length > 1) {
       return (
-        <div>
-          <div className='sort-buttons'>
-            <h3>Sortuj zadania:</h3>
-            <div className='buttonRegural' onClick={this.props.sortByTitle} >Nazwa</div>
-            <div className='buttonRegural' onClick={this.props.sortByDone} >Wykonane</div>
-            <div className='buttonRegural' onClick={this.props.sortByUrgent} >Ważne</div>
-          </div>
-          <div className='secretButtons'>
-            <div className='secretOne' onClick={this.props.slide} ></div>
-            <div className='secretTwo' onClick={this.props.backgroundChange} ></div>
-          </div>
+        <div className='sort-buttons'>
+          <h3>Sortuj zadania:</h3>
+          <div className='buttonRegural' onClick={this.props.sortByTitle} >Nazwa</div>
+          <div className='buttonRegural' onClick={this.props.sortByDone} >Wykonane</div>
+          <div className='buttonRegural' onClick={this.props.sortByUrgent} >Ważne</div>
         </div>
       )
     } else {
       return null
     }
+  }
+}
+
+class SecretButtons extends React.Component {
+  render(){
+    return (
+      <div className='secretButtons'>
+        <div className='secretOne' onClick={this.props.slide} ></div>
+        <div className='secretTwo' onClick={this.props.backgroundChange} ></div>
+      </div>
+    )
   }
 }
 

@@ -12040,7 +12040,8 @@ var ToDoList = function (_React$Component) {
                     list: this.state.list,
                     sortByTitle: this.handleSortTitle,
                     sortByDone: this.handleSortDone,
-                    sortByUrgent: this.handleSortUrgent,
+                    sortByUrgent: this.handleSortUrgent }),
+                  _react2.default.createElement(SecretButtons, {
                     backgroundChange: this.handleBackgroundChange })
                 )
               )
@@ -12237,36 +12238,26 @@ var SortButtons = function (_React$Component4) {
       if (this.props.list.length > 1) {
         return _react2.default.createElement(
           'div',
-          null,
+          { className: 'sort-buttons' },
           _react2.default.createElement(
-            'div',
-            { className: 'sort-buttons' },
-            _react2.default.createElement(
-              'h3',
-              null,
-              'Sortuj zadania:'
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'buttonRegural', onClick: this.props.sortByTitle },
-              'Nazwa'
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'buttonRegural', onClick: this.props.sortByDone },
-              'Wykonane'
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'buttonRegural', onClick: this.props.sortByUrgent },
-              'Wa\u017Cne'
-            )
+            'h3',
+            null,
+            'Sortuj zadania:'
           ),
           _react2.default.createElement(
             'div',
-            { className: 'secretButtons' },
-            _react2.default.createElement('div', { className: 'secretOne', onClick: this.props.slide }),
-            _react2.default.createElement('div', { className: 'secretTwo', onClick: this.props.backgroundChange })
+            { className: 'buttonRegural', onClick: this.props.sortByTitle },
+            'Nazwa'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'buttonRegural', onClick: this.props.sortByDone },
+            'Wykonane'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'buttonRegural', onClick: this.props.sortByUrgent },
+            'Wa\u017Cne'
           )
         );
       } else {
@@ -12278,8 +12269,32 @@ var SortButtons = function (_React$Component4) {
   return SortButtons;
 }(_react2.default.Component);
 
-var SimpleSlider = function (_React$Component5) {
-  _inherits(SimpleSlider, _React$Component5);
+var SecretButtons = function (_React$Component5) {
+  _inherits(SecretButtons, _React$Component5);
+
+  function SecretButtons() {
+    _classCallCheck(this, SecretButtons);
+
+    return _possibleConstructorReturn(this, (SecretButtons.__proto__ || Object.getPrototypeOf(SecretButtons)).apply(this, arguments));
+  }
+
+  _createClass(SecretButtons, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'secretButtons' },
+        _react2.default.createElement('div', { className: 'secretOne', onClick: this.props.slide }),
+        _react2.default.createElement('div', { className: 'secretTwo', onClick: this.props.backgroundChange })
+      );
+    }
+  }]);
+
+  return SecretButtons;
+}(_react2.default.Component);
+
+var SimpleSlider = function (_React$Component6) {
+  _inherits(SimpleSlider, _React$Component6);
 
   function SimpleSlider() {
     _classCallCheck(this, SimpleSlider);
@@ -12323,8 +12338,8 @@ var SimpleSlider = function (_React$Component5) {
   return SimpleSlider;
 }(_react2.default.Component);
 
-var App = function (_React$Component6) {
-  _inherits(App, _React$Component6);
+var App = function (_React$Component7) {
+  _inherits(App, _React$Component7);
 
   function App() {
     _classCallCheck(this, App);
