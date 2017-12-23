@@ -210,7 +210,7 @@ class ToDoList extends React.Component{
   render(){
     return (
       <div className='main' style={{
-        background: `url(../dist/${this.state.imageNumber}.jpg) right center / cover no-repeat fixed`
+        background: `url(./dist/${this.state.imageNumber}.jpg) right center / cover no-repeat fixed`
       }}>
         <div className='phone'>
           <div className='lefthand'>
@@ -251,7 +251,7 @@ class ToDoList extends React.Component{
                     sortByUrgent={this.handleSortUrgent}/>
                   <SecretButtons
                     backgroundChange={this.handleBackgroundChange} />
-                    
+
                 </div>
               </li>
             </ul>
