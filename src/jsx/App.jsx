@@ -392,7 +392,6 @@ class App extends React.Component{
     return (
       <div>
         <ToDoList city="Wroclaw"/>
-        // <SimpleSlider />
       </div>
     )
 
