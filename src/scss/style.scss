@@ -38,12 +38,16 @@
   }
 }
 
+body {
+  // min-width: 800px;
+}
+
 .main {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  position: absolute;
   width: 100%;
+  min-width: 980px;
   min-height: 100vh;
   padding-bottom: 20px;
   animation-name: appear;
