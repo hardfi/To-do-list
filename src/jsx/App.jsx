@@ -210,7 +210,7 @@ class ToDoList extends React.Component{
   render(){
     return (
       <div className='main' style={{
-        background: `url(../${this.state.imageNumber}.jpg) right center / cover no-repeat fixed`
+        background: `url(./dist/${this.state.imageNumber}.jpg) right center / cover no-repeat fixed`
       }}>
         <div className='phone'>
           <div className='lefthand'>
@@ -374,25 +374,25 @@ class SecretButtons extends React.Component {
   }
 }
 
-class SimpleSlider extends React.Component {
-  render(){
-
-      var settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-      return (
-        <Slider {...settings}>
-          <li><img src='../../dist/221.jpg' /></li>
-          <li><img src='../../dist/222.jpg' /></li>
-          <li><img src='../../dist/223.jpg' /></li>
-        </Slider>
-      );
-    }
-  }
+// class SimpleSlider extends React.Component {
+//   render(){
+//
+//       var settings = {
+//         dots: true,
+//         infinite: true,
+//         speed: 500,
+//         slidesToShow: 1,
+//         slidesToScroll: 1
+//       }
+//       return (
+//         <Slider {...settings}>
+//           <li><img src='../../dist/221.jpg' /></li>
+//           <li><img src='../../dist/222.jpg' /></li>
+//           <li><img src='../../dist/223.jpg' /></li>
+//         </Slider>
+//       );
+//     }
+//   }
 
 class App extends React.Component{
   render(){

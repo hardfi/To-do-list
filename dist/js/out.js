@@ -11989,7 +11989,7 @@ var ToDoList = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'main', style: {
-            background: 'url(../' + this.state.imageNumber + '.jpg) right center / cover no-repeat fixed'
+            background: 'url(./dist/' + this.state.imageNumber + '.jpg) right center / cover no-repeat fixed'
           } },
         _react2.default.createElement(
           'div',
@@ -12293,53 +12293,28 @@ var SecretButtons = function (_React$Component5) {
   return SecretButtons;
 }(_react2.default.Component);
 
-var SimpleSlider = function (_React$Component6) {
-  _inherits(SimpleSlider, _React$Component6);
+// class SimpleSlider extends React.Component {
+//   render(){
+//
+//       var settings = {
+//         dots: true,
+//         infinite: true,
+//         speed: 500,
+//         slidesToShow: 1,
+//         slidesToScroll: 1
+//       }
+//       return (
+//         <Slider {...settings}>
+//           <li><img src='../../dist/221.jpg' /></li>
+//           <li><img src='../../dist/222.jpg' /></li>
+//           <li><img src='../../dist/223.jpg' /></li>
+//         </Slider>
+//       );
+//     }
+//   }
 
-  function SimpleSlider() {
-    _classCallCheck(this, SimpleSlider);
-
-    return _possibleConstructorReturn(this, (SimpleSlider.__proto__ || Object.getPrototypeOf(SimpleSlider)).apply(this, arguments));
-  }
-
-  _createClass(SimpleSlider, [{
-    key: 'render',
-    value: function render() {
-
-      var settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-      };
-      return _react2.default.createElement(
-        _reactSlick2.default,
-        settings,
-        _react2.default.createElement(
-          'li',
-          null,
-          _react2.default.createElement('img', { src: '../../dist/221.jpg' })
-        ),
-        _react2.default.createElement(
-          'li',
-          null,
-          _react2.default.createElement('img', { src: '../../dist/222.jpg' })
-        ),
-        _react2.default.createElement(
-          'li',
-          null,
-          _react2.default.createElement('img', { src: '../../dist/223.jpg' })
-        )
-      );
-    }
-  }]);
-
-  return SimpleSlider;
-}(_react2.default.Component);
-
-var App = function (_React$Component7) {
-  _inherits(App, _React$Component7);
+var App = function (_React$Component6) {
+  _inherits(App, _React$Component6);
 
   function App() {
     _classCallCheck(this, App);
