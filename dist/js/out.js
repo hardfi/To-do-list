@@ -11989,7 +11989,7 @@ var ToDoList = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'main', style: {
-            background: 'url(./dist/' + this.state.imageNumber + '.jpg) right center / cover no-repeat fixed'
+            background: 'url(../' + this.state.imageNumber + '.jpg) right center / cover no-repeat fixed'
           } },
         _react2.default.createElement(
           'div',
