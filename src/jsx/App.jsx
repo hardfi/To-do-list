@@ -25,18 +25,16 @@ class ToDoList extends React.Component{
     let list = JSON.parse(localStorage.getItem('list')) || [];
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${this.props.city}&appid=e79ae7fdae604a770d5aad5b8daea200`;
 
-    console.log(url);
-
     this.setState({
       list: list
     });
 
-    fetch(url).then(resp => {
-                  return resp.json();
-             }).then(data => {
-                  return this.setState({weather: data.coord.lon})
-             }).catch(err => console.log(err))
-               // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
+    // fetch(url).then(resp => {
+    //               return resp.json();
+    //          }).then(data => {
+    //               return this.setState({weather: data.coord.lon})
+    //          }).catch(err => console.log(err))
+    //            // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
   }
 
   componentDidUpdate() {
@@ -232,28 +230,10 @@ class ToDoList extends React.Component{
                     sortByDone={this.handleSortDone}
                     sortByUrgent={this.handleSortUrgent}
                     backgroundChange={this.handleBackgroundChange}/>
+                  <SecretButtons backgroundChange={this.handleBackgroundChange}/>
                 </div>
               </li>
-              <li>
-                <div className='content'>
-                  <AddTaskBar
-                    inputText={this.handleInput}
-                    addTask={this.handleClickAdd}
-                    input={this.state.input}
-                    classToggle={this.checkboxClassToggle}
-                    checkbox={this.state.checkbox}
-                    enterKeyPress={this.handleEnterKey}
-                    inputError={this.state.inputError}/>
-                  <SortButtons
-                    list={this.state.list}
-                    sortByTitle={this.handleSortTitle}
-                    sortByDone={this.handleSortDone}
-                    sortByUrgent={this.handleSortUrgent}/>
-                  <SecretButtons
-                    backgroundChange={this.handleBackgroundChange} />
 
-                </div>
-              </li>
             </ul>
 
           </div>
@@ -300,28 +280,23 @@ class AddTaskBar extends React.Component{
     }
 
     return (
-      <div className='task-add'>
-        <form>
-          <div className='form-inside'>
-            <div className={errorClass}>Zadanie musi mieć od 4 do 50 znaków.</div>
-            <span className={spanClass}>{this.props.input.length}</span>
-            <h2>nowe zadanie:</h2>
-            <input
-              type='text'
-              onChange={this.props.inputText}
-              value={this.props.input}
-              onKeyPress={e => this.props.enterKeyPress(e)}/>
-            <h2>ważne?</h2>
-            <div
-              onClick={this.props.classToggle}
-              className={this.props.checkbox ? 'checked' : 'unchecked'}>
-              <div className='tick'></div>
-            </div>
-            <div className='buttonAdd'
-              onClick={this.props.addTask}>
-              Dodaj</div>
-          </div>
-        </form>
+      <div className='form-inside'>
+        <div className={errorClass}>Zadanie musi mieć od 4 do 50 znaków.</div>
+        <span className={spanClass}>{this.props.input.length}</span>
+        <h2>nowe zadanie:</h2>
+        <input
+          type='text'
+          onChange={this.props.inputText}
+          value={this.props.input}
+          onKeyPress={e => this.props.enterKeyPress(e)}/>
+        <h2>ważne?</h2>
+        <div
+          onClick={this.props.classToggle}
+          className={this.props.checkbox ? 'checked' : 'unchecked'}>
+        </div>
+        <div className='buttonAdd'
+          onClick={this.props.addTask}>
+          Dodaj</div>
       </div>
     )
   }
@@ -393,6 +368,28 @@ class SecretButtons extends React.Component {
 //       );
 //     }
 //   }
+//
+// <li>
+//   <div className='content'>
+//     <AddTaskBar
+//       inputText={this.handleInput}
+//       addTask={this.handleClickAdd}
+//       input={this.state.input}
+//       classToggle={this.checkboxClassToggle}
+//       checkbox={this.state.checkbox}
+//       enterKeyPress={this.handleEnterKey}
+//       inputError={this.state.inputError}/>
+//     <SortButtons
+//       list={this.state.list}
+//       sortByTitle={this.handleSortTitle}
+//       sortByDone={this.handleSortDone}
+//       sortByUrgent={this.handleSortUrgent}/>
+//     <SecretButtons
+//       backgroundChange={this.handleBackgroundChange} />
+//
+//   </div>
+// </li>
+
 
 class App extends React.Component{
   render(){

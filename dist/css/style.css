@@ -352,39 +352,134 @@
   font-weight: 700;
   padding: 3px;
   background-color: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  width: 220px; }
+  cursor: pointer; }
   .buttonAdd:hover, .sort-buttons > div:hover {
     background-color: rgba(255, 255, 255, 0.5); }
 
-.main {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-  min-width: 980px;
-  min-height: 100vh;
-  padding-bottom: 20px;
-  animation-name: appear;
-  animation-duration: 1s; }
-  .main .lefthand {
+.lefthand {
+  z-index: 10;
+  position: relative;
+  user-select: none;
+  font-family: 'Roboto Condensed', sans-serif;
+  overflow: hidden;
+  position: relative; }
+  .lefthand .noerror {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s linear; }
+  .lefthand .error {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s linear; }
+  .lefthand span {
+    position: absolute; }
+    .lefthand span.wrong {
+      color: #fa5757; }
+      .lefthand span.wrong:after {
+        content: ' !'; }
+  .lefthand h2 {
+    text-transform: uppercase; }
+  .lefthand input {
+    border: none;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 3px;
+    font-family: 'Roboto Condensed', sans-serif; }
+    .lefthand input:focus {
+      outline: none; }
+  .lefthand .unchecked, .lefthand .checked {
+    cursor: pointer;
+    border-radius: 100%; }
+  .lefthand .unchecked {
+    background-color: white; }
+  .lefthand .checked {
+    background-color: black;
+    box-shadow: inset 0px 0px 0px 5px white; }
+  .lefthand .secretButtons {
+    display: flex;
+    margin-top: 45px;
+    position: absolute; }
+    .lefthand .secretButtons .secretOne, .lefthand .secretButtons .secretTwo {
+      background-color: transparent;
+      width: 18px;
+      height: 18px;
+      margin-left: 34px;
+      border-radius: 100%;
+      cursor: pointer; }
+    .lefthand .secretButtons .secretOne {
+      margin-left: 34px; }
+    .lefthand .secretButtons .secretTwo {
+      margin-left: 56px; }
+      .lefthand .secretButtons .secretTwo:hover {
+        background-color: white; }
+
+.paper {
+  position: relative;
+  z-index: 0; }
+  .paper .content {
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    width: 445px;
+    word-break: normal;
+    margin-top: 45px;
+    margin-left: 135px; }
+    .paper .content h2 {
+      margin: 0 0 20px 100px; }
+    .paper .content ul li {
+      list-style-type: none;
+      margin: 5px auto;
+      cursor: pointer; }
+      .paper .content ul li.done h3 {
+        text-decoration: line-through; }
+      .paper .content ul li.urgent h3, .paper .content ul li.urgent .button-urgent {
+        color: #b91818;
+        text-decoration: underline; }
+      .paper .content ul li.done.urgent h3 {
+        color: #b91818;
+        text-decoration: underline line-through; }
+      .paper .content ul li .buttons {
+        margin-left: 25px;
+        display: flex;
+        color: #a1a1a1; }
+        .paper .content ul li .buttons .button-urgent, .paper .content ul li .buttons .button-delete {
+          margin-right: 20px; }
+          .paper .content ul li .buttons .button-urgent:hover, .paper .content ul li .buttons .button-delete:hover {
+            color: black; }
+
+@media (min-width: 900px) {
+  .buttonAdd, .sort-buttons > div {
+    width: 220px; }
+  body, #app {
+    width: 100%;
+    min-height: 100vh; }
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    padding-bottom: 20px;
+    animation-name: appear;
+    animation-duration: 1s; }
+  .lefthand {
     background: url("../../dist/cell.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
     height: 600px;
     width: 350px;
-    transform: rotate(-8deg);
-    z-index: 10;
-    position: relative;
-    user-select: none;
-    font-family: 'Roboto Condensed', sans-serif;
-    overflow: hidden; }
-    .main .lefthand ul {
+    transform: rotate(-8deg); }
+    .lefthand ul {
       display: flex; }
-      .main .lefthand ul li {
+      .lefthand ul li {
         list-style-type: none; }
-    .main .lefthand .content {
+    .lefthand .content {
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -393,93 +488,140 @@
       padding-left: 40px;
       text-align: center;
       color: white; }
-      .main .lefthand .content .task-add .form-inside {
+      .lefthand .content .form-inside {
         display: flex;
         align-items: center;
         flex-direction: column;
         position: relative; }
-        .main .lefthand .content .task-add .form-inside .noerror {
-          position: absolute;
-          opacity: 0;
-          transition: opacity 0.5s linear; }
-        .main .lefthand .content .task-add .form-inside .error {
-          position: absolute;
+        .lefthand .content .form-inside .error {
           top: -17px;
           left: -20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: black;
           height: 50px;
-          width: 264px;
-          visibility: visible;
-          opacity: 1;
-          transition: opacity 0.5s linear; }
-        .main .lefthand .content .task-add .form-inside span {
-          position: absolute;
+          width: 264px; }
+        .lefthand .content .form-inside h2 {
+          margin: 7px auto; }
+        .lefthand .content .form-inside .unchecked, .lefthand .content .form-inside .checked {
+          width: 20px;
+          height: 20px; }
+        .lefthand .content .form-inside span {
           top: -35px;
           left: 2px; }
-          .main .lefthand .content .task-add .form-inside span.wrong {
-            color: #fa5757; }
-            .main .lefthand .content .task-add .form-inside span.wrong:after {
-              content: ' !'; }
-        .main .lefthand .content .task-add .form-inside h2 {
-          text-transform: uppercase;
-          margin: 7px auto; }
-        .main .lefthand .content .task-add .form-inside input {
-          border: none;
-          font-size: 20px;
+        .lefthand .content .form-inside input {
           margin: 10px auto;
-          width: 220px;
-          background-color: rgba(255, 255, 255, 0.6);
-          padding: 3px;
-          font-family: 'Roboto Condensed', sans-serif; }
-          .main .lefthand .content .task-add .form-inside input:focus {
-            outline: none; }
-        .main .lefthand .content .task-add .form-inside .buttonAdd {
+          width: 220px; }
+        .lefthand .content .form-inside .buttonAdd {
           margin: 15px auto;
           height: 40px;
           font-size: 22px; }
-        .main .lefthand .content .task-add .form-inside .unchecked, .main .lefthand .content .task-add .form-inside .checked {
-          width: 20px;
-          height: 20px;
-          cursor: pointer;
-          border-radius: 100%; }
-        .main .lefthand .content .task-add .form-inside .unchecked {
-          background-color: white; }
-        .main .lefthand .content .task-add .form-inside .checked {
-          background-color: black;
-          box-shadow: inset 0px 0px 0px 5px white; }
-    .main .lefthand .sort-buttons {
+    .lefthand .sort-buttons {
       margin: 10px auto;
       text-transform: uppercase; }
-      .main .lefthand .sort-buttons .buttonRegural {
+      .lefthand .sort-buttons .buttonRegural {
         font-size: 18px;
         margin: 5px; }
-    .main .lefthand .secretButtons {
-      display: flex;
-      margin-top: 45px;
-      position: absolute;
+    .lefthand .secretButtons {
       top: 453px;
       left: 55px; }
-      .main .lefthand .secretButtons .secretOne {
-        background-color: transparent;
-        width: 18px;
-        height: 18px;
-        margin-left: 34px;
-        border-radius: 100%;
-        cursor: pointer; }
-      .main .lefthand .secretButtons .secretTwo {
-        background-color: transparent;
-        width: 18px;
-        height: 18px;
-        margin-left: 56px;
-        border-radius: 100%;
-        cursor: pointer; }
-        .main .lefthand .secretButtons .secretTwo:hover {
-          background-color: white; }
-  .main .paper {
-    position: relative;
+  .paper {
+    background: url("../124.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: rotate(3deg);
+    height: 850px;
+    width: 650px;
+    min-width: 650px;
+    margin-left: -110px;
+    margin-right: 50px; } }
+  @media (min-width: 900px) and (min-width: 1600px) {
+    .paper {
+      margin-right: 10%; } }
+  @media (min-width: 900px) and (min-width: 2100px) {
+    .paper {
+      margin-right: 15%; } }
+
+@media (max-width: 899px) {
+  body, #app {
+    width: 100%;
+    min-height: 1155px;
+    min-width: 660px; }
+  .main {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    min-width: 100vw;
+    animation-name: appear;
+    animation-duration: 1s; }
+  .lefthand {
+    background: url("../../dist/cell_sm.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 600px;
+    height: 350px;
+    margin: 0 auto;
+    transform: rotate(-2deg); }
+    .lefthand li {
+      list-style-type: none;
+      position: absolute;
+      top: 0;
+      left: 0; }
+    .lefthand .content {
+      padding-top: 46px;
+      padding-left: 76px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 510px;
+      margin-top: 23px; }
+      .lefthand .content .noerror {
+        top: 68px;
+        left: 145px; }
+      .lefthand .content .error {
+        top: 64px;
+        left: 65px;
+        width: 460px;
+        height: 34px; }
+      .lefthand .content span {
+        margin-left: 12px;
+        top: 46px;
+        left: 77px; }
+      .lefthand .content input {
+        margin: 10px 0;
+        width: 250px;
+        display: block; }
+      .lefthand .content .buttonAdd {
+        height: 30px;
+        font-size: 20px;
+        width: 250px;
+        margin: 8px auto 9px; }
+      .lefthand .content h2 {
+        font-size: 20px;
+        margin: 3px auto; }
+      .lefthand .content h2:not(:first-of-type) {
+        display: inline-block; }
+      .lefthand .content .unchecked, .lefthand .content .checked {
+        display: inline-block;
+        margin-left: 10px;
+        width: 17px;
+        height: 17px; }
+      .lefthand .content .sort-buttons {
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        margin: 5px; }
+        .lefthand .content .sort-buttons .buttonRegural {
+          font-size: 18px;
+          margin: 5px;
+          padding: 5px; }
+      .lefthand .content .secretButtons {
+        top: 239px;
+        left: 189px; }
+  .paper {
+    transform: rotate(1deg);
     background: url("../124.png");
     background-size: contain;
     background-repeat: no-repeat;
@@ -487,42 +629,6 @@
     height: 850px;
     width: 650px;
     min-width: 650px;
-    transform: rotate(3deg);
-    margin-left: -110px;
-    margin-right: 50px;
-    z-index: 0; }
-    @media (min-width: 1600px) {
-      .main .paper {
-        margin-right: 10%; } }
-    @media (min-width: 2100px) {
-      .main .paper {
-        margin-right: 15%; } }
-    .main .paper .content {
-      font-family: 'Caveat', cursive;
-      margin-top: 45px;
-      margin-left: 135px;
-      font-size: 28px;
-      width: 445px;
-      word-break: normal; }
-      .main .paper .content h2 {
-        margin: 0 0 20px 100px; }
-      .main .paper .content ul li {
-        list-style-type: none;
-        margin: 5px auto;
-        cursor: pointer; }
-        .main .paper .content ul li.done h3 {
-          text-decoration: line-through; }
-        .main .paper .content ul li.urgent h3, .main .paper .content ul li.urgent .button-urgent {
-          color: #b91818;
-          text-decoration: underline; }
-        .main .paper .content ul li.done.urgent h3 {
-          color: #b91818;
-          text-decoration: underline line-through; }
-        .main .paper .content ul li .buttons {
-          margin-left: 25px;
-          display: flex;
-          color: #a1a1a1; }
-          .main .paper .content ul li .buttons .button-urgent, .main .paper .content ul li .buttons .button-delete {
-            margin-right: 20px; }
-            .main .paper .content ul li .buttons .button-urgent:hover, .main .paper .content ul li .buttons .button-delete:hover {
-              color: black; }
+    margin: -88px auto 10px; }
+    .paper .content {
+      padding-top: 40px; } }

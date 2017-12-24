@@ -11955,25 +11955,19 @@ var ToDoList = function (_React$Component) {
   _createClass(ToDoList, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      var _this2 = this;
-
       var list = JSON.parse(localStorage.getItem('list')) || [];
       var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + this.props.city + '&appid=e79ae7fdae604a770d5aad5b8daea200';
-
-      console.log(url);
 
       this.setState({
         list: list
       });
 
-      fetch(url).then(function (resp) {
-        return resp.json();
-      }).then(function (data) {
-        return _this2.setState({ weather: data.coord.lon });
-      }).catch(function (err) {
-        return console.log(err);
-      });
-      // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
+      // fetch(url).then(resp => {
+      //               return resp.json();
+      //          }).then(data => {
+      //               return this.setState({weather: data.coord.lon})
+      //          }).catch(err => console.log(err))
+      //            // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
     }
   }, {
     key: 'componentDidUpdate',
@@ -11984,7 +11978,7 @@ var ToDoList = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       return _react2.default.createElement(
         'div',
@@ -12019,30 +12013,8 @@ var ToDoList = function (_React$Component) {
                     sortByTitle: this.handleSortTitle,
                     sortByDone: this.handleSortDone,
                     sortByUrgent: this.handleSortUrgent,
-                    backgroundChange: this.handleBackgroundChange })
-                )
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                _react2.default.createElement(
-                  'div',
-                  { className: 'content' },
-                  _react2.default.createElement(AddTaskBar, {
-                    inputText: this.handleInput,
-                    addTask: this.handleClickAdd,
-                    input: this.state.input,
-                    classToggle: this.checkboxClassToggle,
-                    checkbox: this.state.checkbox,
-                    enterKeyPress: this.handleEnterKey,
-                    inputError: this.state.inputError }),
-                  _react2.default.createElement(SortButtons, {
-                    list: this.state.list,
-                    sortByTitle: this.handleSortTitle,
-                    sortByDone: this.handleSortDone,
-                    sortByUrgent: this.handleSortUrgent }),
-                  _react2.default.createElement(SecretButtons, {
-                    backgroundChange: this.handleBackgroundChange })
+                    backgroundChange: this.handleBackgroundChange }),
+                  _react2.default.createElement(SecretButtons, { backgroundChange: this.handleBackgroundChange })
                 )
               )
             )
@@ -12069,9 +12041,9 @@ var ToDoList = function (_React$Component) {
                   return _react2.default.createElement(SingleTask, {
                     task: elem,
                     key: elem.id,
-                    clickDone: _this3.handleClickDone,
-                    clickUrgent: _this3.handleCheckBox,
-                    clickDelete: _this3.handleClickDelete });
+                    clickDone: _this2.handleClickDone,
+                    clickUrgent: _this2.handleCheckBox,
+                    clickDelete: _this2.handleClickDelete });
                 })
               )
             )
@@ -12096,7 +12068,7 @@ var AddTaskBar = function (_React$Component2) {
   _createClass(AddTaskBar, [{
     key: 'render',
     value: function render() {
-      var _this5 = this;
+      var _this4 = this;
 
       var spanClass = 'wrong';
       if (this.props.input.length < 4 || this.props.input.length > 50) {
@@ -12114,54 +12086,42 @@ var AddTaskBar = function (_React$Component2) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'task-add' },
+        { className: 'form-inside' },
         _react2.default.createElement(
-          'form',
+          'div',
+          { className: errorClass },
+          'Zadanie musi mie\u0107 od 4 do 50 znak\xF3w.'
+        ),
+        _react2.default.createElement(
+          'span',
+          { className: spanClass },
+          this.props.input.length
+        ),
+        _react2.default.createElement(
+          'h2',
           null,
-          _react2.default.createElement(
-            'div',
-            { className: 'form-inside' },
-            _react2.default.createElement(
-              'div',
-              { className: errorClass },
-              'Zadanie musi mie\u0107 od 4 do 50 znak\xF3w.'
-            ),
-            _react2.default.createElement(
-              'span',
-              { className: spanClass },
-              this.props.input.length
-            ),
-            _react2.default.createElement(
-              'h2',
-              null,
-              'nowe zadanie:'
-            ),
-            _react2.default.createElement('input', {
-              type: 'text',
-              onChange: this.props.inputText,
-              value: this.props.input,
-              onKeyPress: function onKeyPress(e) {
-                return _this5.props.enterKeyPress(e);
-              } }),
-            _react2.default.createElement(
-              'h2',
-              null,
-              'wa\u017Cne?'
-            ),
-            _react2.default.createElement(
-              'div',
-              {
-                onClick: this.props.classToggle,
-                className: this.props.checkbox ? 'checked' : 'unchecked' },
-              _react2.default.createElement('div', { className: 'tick' })
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'buttonAdd',
-                onClick: this.props.addTask },
-              'Dodaj'
-            )
-          )
+          'nowe zadanie:'
+        ),
+        _react2.default.createElement('input', {
+          type: 'text',
+          onChange: this.props.inputText,
+          value: this.props.input,
+          onKeyPress: function onKeyPress(e) {
+            return _this4.props.enterKeyPress(e);
+          } }),
+        _react2.default.createElement(
+          'h2',
+          null,
+          'wa\u017Cne?'
+        ),
+        _react2.default.createElement('div', {
+          onClick: this.props.classToggle,
+          className: this.props.checkbox ? 'checked' : 'unchecked' }),
+        _react2.default.createElement(
+          'div',
+          { className: 'buttonAdd',
+            onClick: this.props.addTask },
+          'Dodaj'
         )
       );
     }
@@ -12182,7 +12142,7 @@ var SingleTask = function (_React$Component3) {
   _createClass(SingleTask, [{
     key: 'render',
     value: function render() {
-      var _this7 = this;
+      var _this6 = this;
 
       var task = this.props.task;
 
@@ -12192,7 +12152,7 @@ var SingleTask = function (_React$Component3) {
         _react2.default.createElement(
           'h3',
           { className: 'button-done', onClick: function onClick() {
-              return _this7.props.clickDone(task.id);
+              return _this6.props.clickDone(task.id);
             } },
           '- ',
           task.name
@@ -12203,14 +12163,14 @@ var SingleTask = function (_React$Component3) {
           _react2.default.createElement(
             'h5',
             { className: 'button-urgent', onClick: function onClick() {
-                return _this7.props.clickUrgent(task.id);
+                return _this6.props.clickUrgent(task.id);
               } },
             'wa\u017Cne!'
           ),
           _react2.default.createElement(
             'h5',
             { className: 'button-delete', onClick: function onClick() {
-                return _this7.props.clickDelete(task.id);
+                return _this6.props.clickDelete(task.id);
               } },
             'usu\u0144'
           )
@@ -12312,6 +12272,28 @@ var SecretButtons = function (_React$Component5) {
 //       );
 //     }
 //   }
+//
+// <li>
+//   <div className='content'>
+//     <AddTaskBar
+//       inputText={this.handleInput}
+//       addTask={this.handleClickAdd}
+//       input={this.state.input}
+//       classToggle={this.checkboxClassToggle}
+//       checkbox={this.state.checkbox}
+//       enterKeyPress={this.handleEnterKey}
+//       inputError={this.state.inputError}/>
+//     <SortButtons
+//       list={this.state.list}
+//       sortByTitle={this.handleSortTitle}
+//       sortByDone={this.handleSortDone}
+//       sortByUrgent={this.handleSortUrgent}/>
+//     <SecretButtons
+//       backgroundChange={this.handleBackgroundChange} />
+//
+//   </div>
+// </li>
+
 
 var App = function (_React$Component6) {
   _inherits(App, _React$Component6);
