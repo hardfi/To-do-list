@@ -11757,6 +11757,10 @@ var _reactSlick = __webpack_require__(199);
 
 var _reactSlick2 = _interopRequireDefault(_reactSlick);
 
+var _Weather = __webpack_require__(222);
+
+var _Weather2 = _interopRequireDefault(_Weather);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11955,6 +11959,8 @@ var ToDoList = function (_React$Component) {
   _createClass(ToDoList, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
+      var _this2 = this;
+
       var list = JSON.parse(localStorage.getItem('list')) || [{ name: "Cześć! Chcesz zobaczyć jak to działa?", done: "", id: 1514117485653, urgent: "urgent" }, { name: "Mam dla Ciebie zadania do wykonania:", done: "", id: 1514117511899, urgent: "" }, { name: "Dodaj lub usuń jakieś zadanie", done: "", id: 1514117530120, urgent: "" }, { name: "Oznacz zadanie jako ważne", done: "", id: 1514117542053, urgent: "" }, { name: "Posortuj zadania", done: "", id: 1514117548187, urgent: "" }, { name: "Pobaw się telefonem i odkryj ukryte funkcje! :)", done: "", id: 1514117720590, urgent: "urgent" }];
 
       var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + this.props.city + '&appid=e79ae7fdae604a770d5aad5b8daea200';
@@ -11962,12 +11968,14 @@ var ToDoList = function (_React$Component) {
       this.setState({
         list: list
       });
-      // fetch(url).then(resp => {
-      //               return resp.json();
-      //          }).then(data => {
-      //               return this.setState({weather: data.coord.lon})
-      //          }).catch(err => console.log(err))
-      //            // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
+      fetch(url).then(function (resp) {
+        return resp.json();
+      }).then(function (data) {
+        return _this2.setState({ weather: data.coord.lon });
+      }).catch(function (err) {
+        return console.log(err);
+      });
+      // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
     }
   }, {
     key: 'componentDidUpdate',
@@ -11978,7 +11986,7 @@ var ToDoList = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       return _react2.default.createElement(
         'div',
@@ -12041,9 +12049,9 @@ var ToDoList = function (_React$Component) {
                   return _react2.default.createElement(SingleTask, {
                     task: elem,
                     key: elem.id,
-                    clickDone: _this2.handleClickDone,
-                    clickUrgent: _this2.handleCheckBox,
-                    clickDelete: _this2.handleClickDelete });
+                    clickDone: _this3.handleClickDone,
+                    clickUrgent: _this3.handleCheckBox,
+                    clickDelete: _this3.handleClickDelete });
                 })
               )
             )
@@ -12068,7 +12076,7 @@ var AddTaskBar = function (_React$Component2) {
   _createClass(AddTaskBar, [{
     key: 'render',
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       var spanClass = 'wrong';
       if (this.props.input.length < 4 || this.props.input.length > 60) {
@@ -12107,7 +12115,7 @@ var AddTaskBar = function (_React$Component2) {
           onChange: this.props.inputText,
           value: this.props.input,
           onKeyPress: function onKeyPress(e) {
-            return _this4.props.enterKeyPress(e);
+            return _this5.props.enterKeyPress(e);
           } }),
         _react2.default.createElement(
           'h2',
@@ -12142,7 +12150,7 @@ var SingleTask = function (_React$Component3) {
   _createClass(SingleTask, [{
     key: 'render',
     value: function render() {
-      var _this6 = this;
+      var _this7 = this;
 
       var task = this.props.task;
 
@@ -12152,7 +12160,7 @@ var SingleTask = function (_React$Component3) {
         _react2.default.createElement(
           'h3',
           { className: 'button-done', onClick: function onClick() {
-              return _this6.props.clickDone(task.id);
+              return _this7.props.clickDone(task.id);
             } },
           '- ',
           task.name
@@ -12163,14 +12171,14 @@ var SingleTask = function (_React$Component3) {
           _react2.default.createElement(
             'h5',
             { className: 'button-urgent', onClick: function onClick() {
-                return _this6.props.clickUrgent(task.id);
+                return _this7.props.clickUrgent(task.id);
               } },
             'wa\u017Cne!'
           ),
           _react2.default.createElement(
             'h5',
             { className: 'button-delete', onClick: function onClick() {
-                return _this6.props.clickDelete(task.id);
+                return _this7.props.clickDelete(task.id);
               } },
             'usu\u0144'
           )
@@ -27125,6 +27133,62 @@ module.exports = QueryHandler;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(9);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Weather = function (_React$Component) {
+  _inherits(Weather, _React$Component);
+
+  function Weather() {
+    _classCallCheck(this, Weather);
+
+    return _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).apply(this, arguments));
+  }
+
+  _createClass(Weather, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        'hey baby'
+      );
+    }
+  }]);
+
+  return Weather;
+}(_react2.default.Component);
+
+exports.default = Weather;
 
 /***/ })
 /******/ ]);

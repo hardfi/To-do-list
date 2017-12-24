@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import FlipMove from 'react-flip-move';
 import Slider from 'react-slick';
+import Weather from './weather/Weather.jsx'
 
 let counterName = 0,
     counterDone = 0,
@@ -36,12 +37,12 @@ class ToDoList extends React.Component{
     this.setState({
       list: list
     });
-    // fetch(url).then(resp => {
-    //               return resp.json();
-    //          }).then(data => {
-    //               return this.setState({weather: data.coord.lon})
-    //          }).catch(err => console.log(err))
-    //            // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
+    fetch(url).then(resp => {
+                  return resp.json();
+             }).then(data => {
+                  return this.setState({weather: data.coord.lon})
+             }).catch(err => console.log(err))
+               // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
   }
 
   componentDidUpdate() {
@@ -219,7 +220,6 @@ class ToDoList extends React.Component{
       }}>
         <div className='phone'>
           <div className='lefthand'>
-
             <ul>
               <li>
                 <div className='content'>
@@ -240,9 +240,7 @@ class ToDoList extends React.Component{
                   <SecretButtons backgroundChange={this.handleBackgroundChange}/>
                 </div>
               </li>
-
             </ul>
-
           </div>
         </div>
           <div className='paper'>
