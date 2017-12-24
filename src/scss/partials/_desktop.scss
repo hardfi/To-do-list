@@ -5,6 +5,8 @@
 body, #app {
   width: 100%;
   min-height: 100vh;
+  animation-name: appear;
+  animation-duration: 1s;
 }
 
 .main {
@@ -15,8 +17,6 @@ body, #app {
   height: 100%;
   min-height: 100vh;
   padding-bottom: 20px;
-  animation-name: appear;
-  animation-duration: 1s;
 }
 
 .lefthand {
@@ -27,6 +27,8 @@ body, #app {
   height: 600px;
   width: 350px;
   transform: rotate(-8deg);
+  animation-name: appear;
+  animation-duration: 1s;
 
   ul {
     display: flex;
@@ -113,6 +115,8 @@ body, #app {
   min-width: 650px;
   margin-left: -110px;
   margin-right: 50px;
+  animation-name: appear;
+  animation-duration: 1s;
 
   @media(min-width: 1600px) {
     margin-right: 10%;

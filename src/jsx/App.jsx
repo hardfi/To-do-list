@@ -22,13 +22,20 @@ class ToDoList extends React.Component{
   }
 
   componentWillMount() {
-    let list = JSON.parse(localStorage.getItem('list')) || [];
+    let list = JSON.parse(localStorage.getItem('list')) || [
+      {name: "Cześć! Chcesz zobaczyć jak to działa?", done: "", id: 1514117485653, urgent: "urgent"},
+      {name: "Mam dla Ciebie zadania do wykonania:", done: "", id: 1514117511899, urgent: ""},
+      {name: "Dodaj lub usuń jakieś zadanie", done: "", id: 1514117530120, urgent: ""},
+      {name: "Oznacz zadanie jako ważne", done: "", id: 1514117542053, urgent: ""},
+      {name: "Posortuj zadania", done: "", id: 1514117548187, urgent: ""},
+      {name: "Pobaw się telefonem i odkryj ukryte funkcje! :)", done: "", id: 1514117720590, urgent: "urgent"}
+    ];
+
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${this.props.city}&appid=e79ae7fdae604a770d5aad5b8daea200`;
 
     this.setState({
       list: list
     });
-
     // fetch(url).then(resp => {
     //               return resp.json();
     //          }).then(data => {
@@ -71,14 +78,14 @@ class ToDoList extends React.Component{
   handleClickAdd = () => {
     let list = this.state.list;
 
-    if (list.length === 8) {
+    if (list.length === 7) {
       console.log('full!');
       this.setState({
         fullError: true
       })
     } else {
 
-      if (this.state.input.length < 4 || this.state.input.length > 50) {
+      if (this.state.input.length < 4 || this.state.input.length > 60) {
         this.setState({
           inputError: true
         })
@@ -266,7 +273,7 @@ class AddTaskBar extends React.Component{
   render(){
 
     let spanClass = 'wrong';
-    if (this.props.input.length < 4 || this.props.input.length > 50) {
+    if (this.props.input.length < 4 || this.props.input.length > 60) {
       spanClass = 'wrong';
     } else {
       spanClass = 'right';
@@ -281,7 +288,7 @@ class AddTaskBar extends React.Component{
 
     return (
       <div className='form-inside'>
-        <div className={errorClass}>Zadanie musi mieć od 4 do 50 znaków.</div>
+        <div className={errorClass}>Zadanie musi mieć od 4 do 60 znaków.</div>
         <span className={spanClass}>{this.props.input.length}</span>
         <h2>nowe zadanie:</h2>
         <input

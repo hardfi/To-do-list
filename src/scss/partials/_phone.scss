@@ -2,6 +2,8 @@ body, #app {
   width: 100%;
   min-height: 1155px;
   min-width: 660px;
+  animation-name: appear;
+  animation-duration: 1s;
 }
 
 .main {
@@ -9,8 +11,6 @@ body, #app {
   height: 100%;
   min-height: 100vh;
   min-width: 100vw;
-  animation-name: appear;
-  animation-duration: 1s;
 }
 
 .lefthand {

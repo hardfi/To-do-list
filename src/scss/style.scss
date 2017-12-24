@@ -3,11 +3,11 @@
 @import "../../node_modules/slick-carousel/slick/slick-theme.css";
 @import "./partials/commons";
 
-@media(min-width: 900px) {
+@media(min-width: 1000px) {
   @import "./partials/desktop";
 }
 
-@media(max-width: 899px) {
+@media(max-width: 999px) {
   @import "./partials/phone";
 }
 

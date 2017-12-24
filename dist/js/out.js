@@ -11806,14 +11806,14 @@ var ToDoList = function (_React$Component) {
     _this.handleClickAdd = function () {
       var list = _this.state.list;
 
-      if (list.length === 8) {
+      if (list.length === 7) {
         console.log('full!');
         _this.setState({
           fullError: true
         });
       } else {
 
-        if (_this.state.input.length < 4 || _this.state.input.length > 50) {
+        if (_this.state.input.length < 4 || _this.state.input.length > 60) {
           _this.setState({
             inputError: true
           });
@@ -11955,13 +11955,13 @@ var ToDoList = function (_React$Component) {
   _createClass(ToDoList, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      var list = JSON.parse(localStorage.getItem('list')) || [];
+      var list = JSON.parse(localStorage.getItem('list')) || [{ name: "Cześć! Chcesz zobaczyć jak to działa?", done: "", id: 1514117485653, urgent: "urgent" }, { name: "Mam dla Ciebie zadania do wykonania:", done: "", id: 1514117511899, urgent: "" }, { name: "Dodaj lub usuń jakieś zadanie", done: "", id: 1514117530120, urgent: "" }, { name: "Oznacz zadanie jako ważne", done: "", id: 1514117542053, urgent: "" }, { name: "Posortuj zadania", done: "", id: 1514117548187, urgent: "" }, { name: "Pobaw się telefonem i odkryj ukryte funkcje! :)", done: "", id: 1514117720590, urgent: "urgent" }];
+
       var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + this.props.city + '&appid=e79ae7fdae604a770d5aad5b8daea200';
 
       this.setState({
         list: list
       });
-
       // fetch(url).then(resp => {
       //               return resp.json();
       //          }).then(data => {
@@ -12071,7 +12071,7 @@ var AddTaskBar = function (_React$Component2) {
       var _this4 = this;
 
       var spanClass = 'wrong';
-      if (this.props.input.length < 4 || this.props.input.length > 50) {
+      if (this.props.input.length < 4 || this.props.input.length > 60) {
         spanClass = 'wrong';
       } else {
         spanClass = 'right';
@@ -12090,7 +12090,7 @@ var AddTaskBar = function (_React$Component2) {
         _react2.default.createElement(
           'div',
           { className: errorClass },
-          'Zadanie musi mie\u0107 od 4 do 50 znak\xF3w.'
+          'Zadanie musi mie\u0107 od 4 do 60 znak\xF3w.'
         ),
         _react2.default.createElement(
           'span',
