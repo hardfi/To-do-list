@@ -405,19 +405,24 @@
     display: flex;
     margin-top: 45px;
     position: absolute; }
-    .phone .secretButtons .secretOne, .phone .secretButtons .secretTwo {
+    .phone .secretButtons .secretTwo {
       background-color: transparent;
       width: 18px;
       height: 18px;
       margin-left: 34px;
       border-radius: 100%;
-      cursor: pointer; }
-    .phone .secretButtons .secretOne {
-      margin-left: 34px; }
-    .phone .secretButtons .secretTwo {
-      margin-left: 56px; }
+      cursor: pointer;
+      margin-left: 58px; }
       .phone .secretButtons .secretTwo:hover {
         background-color: white; }
+    .phone .secretButtons .secretOne {
+      cursor: pointer;
+      margin-left: 27px;
+      box-sizing: border-box;
+      border: 8px solid transparent;
+      border-right: 15px solid transparent; }
+      .phone .secretButtons .secretOne:hover {
+        border-right: 15px solid white; }
 
 .paper {
   position: relative;
@@ -548,7 +553,7 @@
       top: 452px;
       left: 55px; }
     .phone .weather {
-      width: 340px;
+      width: 336px;
       height: 480px;
       display: flex;
       justify-content: flex-start;

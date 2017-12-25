@@ -27174,7 +27174,7 @@ var Weather = function (_React$Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      var url = 'http://api.openweathermap.org/data/2.5/weather?q=Katowice&appid=c25f3c202404d3738117f9c16f15bb2e&lang=pl&units=metric';
+      var url = 'https://api.openweathermap.org/data/2.5/weather?q=Katowice&appid=c25f3c202404d3738117f9c16f15bb2e&lang=pl&units=metric';
 
       fetch(url).then(function (resp) {
         return resp.json();

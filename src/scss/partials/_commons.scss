@@ -111,24 +111,29 @@ $color-main: white;
     margin-top: 45px;
     position: absolute;
 
-    .secretOne, .secretTwo {
+    .secretTwo {
       background-color: transparent;
       width: 18px;
       height: 18px;
       margin-left: 34px;
       border-radius: 100%;
       cursor: pointer;
-    }
-
-    .secretOne {
-      margin-left: 34px;
-    }
-
-    .secretTwo {
-      margin-left: 56px;
+      margin-left: 58px;
 
       &:hover {
         background-color: $color-main;
+      }
+    }
+
+    .secretOne {
+      cursor: pointer;
+      margin-left: 27px;
+      box-sizing: border-box;
+      border: 8px solid transparent;
+      border-right: 15px solid transparent;
+
+      &:hover {
+        border-right: 15px solid $color-main;
       }
     }
   }

@@ -9,7 +9,7 @@ class Weather extends React.Component{
   }
 
   componentWillMount() {
-    let url = `http://api.openweathermap.org/data/2.5/weather?q=Katowice&appid=c25f3c202404d3738117f9c16f15bb2e&lang=pl&units=metric`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=Katowice&appid=c25f3c202404d3738117f9c16f15bb2e&lang=pl&units=metric`;
 
     fetch(url).then(resp => {
       return resp.json();
