@@ -1147,6 +1147,16 @@ module.exports = ReactComponentTreeHook;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+module.exports = __webpack_require__(17);
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2016-present, Facebook, Inc.
  *
@@ -1169,16 +1179,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = { debugTool: debugTool };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(17);
-
 
 /***/ }),
 /* 10 */
@@ -2662,7 +2662,7 @@ module.exports = __webpack_require__(107);
 
 
 var ReactRef = __webpack_require__(115);
-var ReactInstrumentation = __webpack_require__(8);
+var ReactInstrumentation = __webpack_require__(9);
 
 var warning = __webpack_require__(2);
 
@@ -5236,7 +5236,7 @@ module.exports = getEventModifierState;
 var DOMLazyTree = __webpack_require__(21);
 var Danger = __webpack_require__(126);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactInstrumentation = __webpack_require__(8);
+var ReactInstrumentation = __webpack_require__(9);
 
 var createMicrosoftUnsafeLocalFunction = __webpack_require__(43);
 var setInnerHTML = __webpack_require__(31);
@@ -5893,7 +5893,7 @@ var _prodInvariant = __webpack_require__(3);
 
 var ReactCurrentOwner = __webpack_require__(11);
 var ReactInstanceMap = __webpack_require__(25);
-var ReactInstrumentation = __webpack_require__(8);
+var ReactInstrumentation = __webpack_require__(9);
 var ReactUpdates = __webpack_require__(12);
 
 var invariant = __webpack_require__(1);
@@ -6617,7 +6617,7 @@ exports.__esModule = true;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -9245,7 +9245,7 @@ module.exports = CSSProperty;
 
 var DOMProperty = __webpack_require__(14);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactInstrumentation = __webpack_require__(8);
+var ReactInstrumentation = __webpack_require__(9);
 
 var quoteAttributeValueForBrowser = __webpack_require__(140);
 var warning = __webpack_require__(2);
@@ -10429,7 +10429,7 @@ var ReactDOMContainerInfo = __webpack_require__(182);
 var ReactDOMFeatureFlags = __webpack_require__(183);
 var ReactFeatureFlags = __webpack_require__(67);
 var ReactInstanceMap = __webpack_require__(25);
-var ReactInstrumentation = __webpack_require__(8);
+var ReactInstrumentation = __webpack_require__(9);
 var ReactMarkupChecksum = __webpack_require__(184);
 var ReactReconciler = __webpack_require__(20);
 var ReactUpdateQueue = __webpack_require__(49);
@@ -11146,7 +11146,7 @@ var getTrackLeft = exports.getTrackLeft = function getTrackLeft(spec) {
 "use strict";
 
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -11262,7 +11262,7 @@ module.exports = {
 
 __webpack_require__(91);
 __webpack_require__(92);
-module.exports = __webpack_require__(215);
+module.exports = __webpack_require__(216);
 
 
 /***/ }),
@@ -11741,7 +11741,7 @@ module.exports = __webpack_require__(215);
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -11757,7 +11757,7 @@ var _reactSlick = __webpack_require__(199);
 
 var _reactSlick2 = _interopRequireDefault(_reactSlick);
 
-var _Weather = __webpack_require__(222);
+var _Weather = __webpack_require__(215);
 
 var _Weather2 = _interopRequireDefault(_Weather);
 
@@ -11772,6 +11772,47 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var counterName = 0,
     counterDone = 0,
     counterUrgent = 0;
+
+var weather = {
+  "coord": {
+    "lon": 17.03,
+    "lat": 51.1
+  },
+  "weather": [{
+    "id": 803,
+    "main": "Clouds",
+    "description": "broken clouds",
+    "icon": "04n"
+  }],
+  "base": "stations",
+  "main": {
+    "temp": 278.15,
+    "pressure": 1025,
+    "humidity": 100,
+    "temp_min": 278.15,
+    "temp_max": 278.15
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 6.7,
+    "deg": 290
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1513870200,
+  "sys": {
+    "type": 1,
+    "id": 5375,
+    "message": 0.0052,
+    "country": "PL",
+    "sunrise": 1513839208,
+    "sunset": 1513867637
+  },
+  "id": 3081368,
+  "name": "Wroclaw",
+  "cod": 200
+};
 
 var ToDoList = function (_React$Component) {
   _inherits(ToDoList, _React$Component);
@@ -11944,6 +11985,18 @@ var ToDoList = function (_React$Component) {
       }
     };
 
+    _this.handleScreenSlide = function () {
+      var phoneScreen = _this.state.phoneScreen;
+      if (phoneScreen === 'screen1') {
+        phoneScreen = 'screen2';
+      } else {
+        phoneScreen = 'screen1';
+      }
+      _this.setState({
+        phoneScreen: phoneScreen
+      });
+    };
+
     _this.state = {
       list: [],
       input: '',
@@ -11951,7 +12004,7 @@ var ToDoList = function (_React$Component) {
       checkbox: false,
       fullError: false,
       imageNumber: 221,
-      weather: ''
+      phoneScreen: 'screen1'
     };
     return _this;
   }
@@ -11959,23 +12012,11 @@ var ToDoList = function (_React$Component) {
   _createClass(ToDoList, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      var _this2 = this;
-
       var list = JSON.parse(localStorage.getItem('list')) || [{ name: "Cześć! Chcesz zobaczyć jak to działa?", done: "", id: 1514117485653, urgent: "urgent" }, { name: "Mam dla Ciebie zadania do wykonania:", done: "", id: 1514117511899, urgent: "" }, { name: "Dodaj lub usuń jakieś zadanie", done: "", id: 1514117530120, urgent: "" }, { name: "Oznacz zadanie jako ważne", done: "", id: 1514117542053, urgent: "" }, { name: "Posortuj zadania", done: "", id: 1514117548187, urgent: "" }, { name: "Pobaw się telefonem i odkryj ukryte funkcje! :)", done: "", id: 1514117720590, urgent: "urgent" }];
-
-      var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + this.props.city + '&appid=e79ae7fdae604a770d5aad5b8daea200';
 
       this.setState({
         list: list
       });
-      fetch(url).then(function (resp) {
-        return resp.json();
-      }).then(function (data) {
-        return _this2.setState({ weather: data.coord.lon });
-      }).catch(function (err) {
-        return console.log(err);
-      });
-      // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
     }
   }, {
     key: 'componentDidUpdate',
@@ -11986,7 +12027,7 @@ var ToDoList = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       return _react2.default.createElement(
         'div',
@@ -11997,36 +12038,39 @@ var ToDoList = function (_React$Component) {
           'div',
           { className: 'phone' },
           _react2.default.createElement(
-            'div',
-            { className: 'lefthand' },
+            'ul',
+            null,
             _react2.default.createElement(
-              'ul',
-              null,
+              'li',
+              { className: this.state.phoneScreen + ' w3-animate-right' },
               _react2.default.createElement(
-                'li',
-                null,
-                _react2.default.createElement(
-                  'div',
-                  { className: 'content' },
-                  _react2.default.createElement(AddTaskBar, {
-                    inputText: this.handleInput,
-                    addTask: this.handleClickAdd,
-                    input: this.state.input,
-                    classToggle: this.checkboxClassToggle,
-                    checkbox: this.state.checkbox,
-                    enterKeyPress: this.handleEnterKey,
-                    inputError: this.state.inputError }),
-                  _react2.default.createElement(SortButtons, {
-                    list: this.state.list,
-                    sortByTitle: this.handleSortTitle,
-                    sortByDone: this.handleSortDone,
-                    sortByUrgent: this.handleSortUrgent,
-                    backgroundChange: this.handleBackgroundChange }),
-                  _react2.default.createElement(SecretButtons, { backgroundChange: this.handleBackgroundChange })
-                )
+                'div',
+                { className: 'content' },
+                _react2.default.createElement(AddTaskBar, {
+                  inputText: this.handleInput,
+                  addTask: this.handleClickAdd,
+                  input: this.state.input,
+                  classToggle: this.checkboxClassToggle,
+                  checkbox: this.state.checkbox,
+                  enterKeyPress: this.handleEnterKey,
+                  inputError: this.state.inputError }),
+                _react2.default.createElement(SortButtons, {
+                  list: this.state.list,
+                  sortByTitle: this.handleSortTitle,
+                  sortByDone: this.handleSortDone,
+                  sortByUrgent: this.handleSortUrgent,
+                  backgroundChange: this.handleBackgroundChange })
               )
+            ),
+            _react2.default.createElement(
+              'li',
+              { className: this.state.phoneScreen + ' w3-animate-left' },
+              _react2.default.createElement(_Weather2.default, null)
             )
-          )
+          ),
+          _react2.default.createElement(SecretButtons, {
+            backgroundChange: this.handleBackgroundChange,
+            slide: this.handleScreenSlide })
         ),
         _react2.default.createElement(
           'div',
@@ -12049,9 +12093,9 @@ var ToDoList = function (_React$Component) {
                   return _react2.default.createElement(SingleTask, {
                     task: elem,
                     key: elem.id,
-                    clickDone: _this3.handleClickDone,
-                    clickUrgent: _this3.handleCheckBox,
-                    clickDelete: _this3.handleClickDelete });
+                    clickDone: _this2.handleClickDone,
+                    clickUrgent: _this2.handleCheckBox,
+                    clickDelete: _this2.handleClickDelete });
                 })
               )
             )
@@ -12076,7 +12120,7 @@ var AddTaskBar = function (_React$Component2) {
   _createClass(AddTaskBar, [{
     key: 'render',
     value: function render() {
-      var _this5 = this;
+      var _this4 = this;
 
       var spanClass = 'wrong';
       if (this.props.input.length < 4 || this.props.input.length > 60) {
@@ -12115,7 +12159,7 @@ var AddTaskBar = function (_React$Component2) {
           onChange: this.props.inputText,
           value: this.props.input,
           onKeyPress: function onKeyPress(e) {
-            return _this5.props.enterKeyPress(e);
+            return _this4.props.enterKeyPress(e);
           } }),
         _react2.default.createElement(
           'h2',
@@ -12150,7 +12194,7 @@ var SingleTask = function (_React$Component3) {
   _createClass(SingleTask, [{
     key: 'render',
     value: function render() {
-      var _this7 = this;
+      var _this6 = this;
 
       var task = this.props.task;
 
@@ -12160,7 +12204,7 @@ var SingleTask = function (_React$Component3) {
         _react2.default.createElement(
           'h3',
           { className: 'button-done', onClick: function onClick() {
-              return _this7.props.clickDone(task.id);
+              return _this6.props.clickDone(task.id);
             } },
           '- ',
           task.name
@@ -12171,14 +12215,14 @@ var SingleTask = function (_React$Component3) {
           _react2.default.createElement(
             'h5',
             { className: 'button-urgent', onClick: function onClick() {
-                return _this7.props.clickUrgent(task.id);
+                return _this6.props.clickUrgent(task.id);
               } },
             'wa\u017Cne!'
           ),
           _react2.default.createElement(
             'h5',
             { className: 'button-delete', onClick: function onClick() {
-                return _this7.props.clickDelete(task.id);
+                return _this6.props.clickDelete(task.id);
               } },
             'usu\u0144'
           )
@@ -12260,48 +12304,6 @@ var SecretButtons = function (_React$Component5) {
 
   return SecretButtons;
 }(_react2.default.Component);
-
-// class SimpleSlider extends React.Component {
-//   render(){
-//
-//       var settings = {
-//         dots: true,
-//         infinite: true,
-//         speed: 500,
-//         slidesToShow: 1,
-//         slidesToScroll: 1
-//       }
-//       return (
-//         <Slider {...settings}>
-//           <li><img src='../../dist/221.jpg' /></li>
-//           <li><img src='../../dist/222.jpg' /></li>
-//           <li><img src='../../dist/223.jpg' /></li>
-//         </Slider>
-//       );
-//     }
-//   }
-//
-// <li>
-//   <div className='content'>
-//     <AddTaskBar
-//       inputText={this.handleInput}
-//       addTask={this.handleClickAdd}
-//       input={this.state.input}
-//       classToggle={this.checkboxClassToggle}
-//       checkbox={this.state.checkbox}
-//       enterKeyPress={this.handleEnterKey}
-//       inputError={this.state.inputError}/>
-//     <SortButtons
-//       list={this.state.list}
-//       sortByTitle={this.handleSortTitle}
-//       sortByDone={this.handleSortDone}
-//       sortByUrgent={this.handleSortUrgent}/>
-//     <SecretButtons
-//       backgroundChange={this.handleBackgroundChange} />
-//
-//   </div>
-// </li>
-
 
 var App = function (_React$Component6) {
   _inherits(App, _React$Component6);
@@ -14021,7 +14023,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactInstrumentation = __webpack_require__(8);
+  var ReactInstrumentation = __webpack_require__(9);
   var ReactDOMUnknownPropertyHook = __webpack_require__(189);
   var ReactDOMNullInputValuePropHook = __webpack_require__(190);
   var ReactDOMInvalidARIAHook = __webpack_require__(191);
@@ -16614,7 +16616,7 @@ var ReactDOMInput = __webpack_require__(143);
 var ReactDOMOption = __webpack_require__(144);
 var ReactDOMSelect = __webpack_require__(76);
 var ReactDOMTextarea = __webpack_require__(145);
-var ReactInstrumentation = __webpack_require__(8);
+var ReactInstrumentation = __webpack_require__(9);
 var ReactMultiChild = __webpack_require__(146);
 var ReactServerRenderingTransaction = __webpack_require__(155);
 
@@ -17641,7 +17643,7 @@ module.exports = AutoFocusUtils;
 
 var CSSProperty = __webpack_require__(73);
 var ExecutionEnvironment = __webpack_require__(6);
-var ReactInstrumentation = __webpack_require__(8);
+var ReactInstrumentation = __webpack_require__(9);
 
 var camelizeStyleName = __webpack_require__(134);
 var dangerousStyleValue = __webpack_require__(136);
@@ -18883,7 +18885,7 @@ var _prodInvariant = __webpack_require__(3);
 
 var ReactComponentEnvironment = __webpack_require__(45);
 var ReactInstanceMap = __webpack_require__(25);
-var ReactInstrumentation = __webpack_require__(8);
+var ReactInstrumentation = __webpack_require__(9);
 
 var ReactCurrentOwner = __webpack_require__(11);
 var ReactReconciler = __webpack_require__(20);
@@ -19494,7 +19496,7 @@ var ReactComponentEnvironment = __webpack_require__(45);
 var ReactCurrentOwner = __webpack_require__(11);
 var ReactErrorUtils = __webpack_require__(37);
 var ReactInstanceMap = __webpack_require__(25);
-var ReactInstrumentation = __webpack_require__(8);
+var ReactInstrumentation = __webpack_require__(9);
 var ReactNodeTypes = __webpack_require__(78);
 var ReactReconciler = __webpack_require__(20);
 
@@ -20685,7 +20687,7 @@ var _assign = __webpack_require__(4);
 
 var PooledClass = __webpack_require__(16);
 var Transaction = __webpack_require__(29);
-var ReactInstrumentation = __webpack_require__(8);
+var ReactInstrumentation = __webpack_require__(9);
 var ReactServerUpdateQueue = __webpack_require__(156);
 
 /**
@@ -21601,7 +21603,7 @@ var CallbackQueue = __webpack_require__(66);
 var PooledClass = __webpack_require__(16);
 var ReactBrowserEventEmitter = __webpack_require__(33);
 var ReactInputSelection = __webpack_require__(83);
-var ReactInstrumentation = __webpack_require__(8);
+var ReactInstrumentation = __webpack_require__(9);
 var Transaction = __webpack_require__(29);
 var ReactUpdateQueue = __webpack_require__(49);
 
@@ -23947,7 +23949,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _reactDom = __webpack_require__(19);
 
@@ -24819,7 +24821,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -25459,7 +25461,7 @@ exports.__esModule = true;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -25623,7 +25625,7 @@ exports.InnerSlider = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -26339,7 +26341,7 @@ module.exports = initialState;
 
 
 
-var React = __webpack_require__(9);
+var React = __webpack_require__(8);
 var factory = __webpack_require__(61);
 
 if (typeof React === 'undefined') {
@@ -26369,7 +26371,7 @@ module.exports = factory(
 exports.__esModule = true;
 exports.Track = undefined;
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -26545,7 +26547,7 @@ var Track = exports.Track = function (_React$Component) {
 exports.__esModule = true;
 exports.Dots = undefined;
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -26640,7 +26642,7 @@ exports.NextArrow = exports.PrevArrow = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -27130,18 +27132,6 @@ module.exports = QueryHandler;
 
 /***/ }),
 /* 215 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 216 */,
-/* 217 */,
-/* 218 */,
-/* 219 */,
-/* 220 */,
-/* 221 */,
-/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27153,7 +27143,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -27168,20 +27158,80 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Weather = function (_React$Component) {
   _inherits(Weather, _React$Component);
 
-  function Weather() {
+  function Weather(props) {
     _classCallCheck(this, Weather);
 
-    return _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).call(this, props));
+
+    _this.state = {
+      weather: false
+    };
+    return _this;
   }
 
   _createClass(Weather, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      var url = 'http://api.openweathermap.org/data/2.5/weather?q=Katowice&appid=c25f3c202404d3738117f9c16f15bb2e&lang=pl&units=metric';
+
+      fetch(url).then(function (resp) {
+        return resp.json();
+      }).then(function (data) {
+        return _this2.setState({ weather: data });
+      }).catch(function (err) {
+        return console.log(err);
+      });
+      // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
+    }
+  }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        'hey baby'
-      );
+
+      if (this.state.weather) {
+        var object = this.state.weather;
+        var temp = Math.round(this.state.weather.main.temp);
+        return _react2.default.createElement(
+          'div',
+          { className: 'weather' },
+          _react2.default.createElement('div', { className: 'icon', style: {
+              background: 'url(./dist/icons/' + object.weather[0].icon + '.png)'
+            } }),
+          _react2.default.createElement(
+            'div',
+            { className: 'data' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              object.weather[0].description
+            ),
+            _react2.default.createElement(
+              'h3',
+              null,
+              'Temp: ',
+              temp,
+              '\xB0C '
+            ),
+            _react2.default.createElement(
+              'h3',
+              null,
+              'Ci\u015Bnienie: ',
+              object.main.pressure,
+              'hPa'
+            ),
+            _react2.default.createElement(
+              'h3',
+              null,
+              'Wiatr: ',
+              object.wind.speed,
+              'm/s'
+            )
+          )
+        );
+      } else {
+        return null;
+      }
     }
   }]);
 
@@ -27189,6 +27239,59 @@ var Weather = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Weather;
+
+/*
+
+
+{
+  "coord": {
+    "lon": 17.03,
+    "lat": 51.1
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 278.15,
+    "pressure": 1025,
+    "humidity": 100,
+    "temp_min": 278.15,
+    "temp_max": 278.15
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 6.7,
+    "deg": 290
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1513870200,
+  "sys": {
+    "type": 1,
+    "id": 5375,
+    "message": 0.0052,
+    "country": "PL",
+    "sunrise": 1513839208,
+    "sunset": 1513867637
+  },
+  "id": 3081368,
+  "name": "Wroclaw",
+  "cod": 200
+}
+*/
+
+/***/ }),
+/* 216 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

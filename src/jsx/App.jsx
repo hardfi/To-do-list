@@ -8,6 +8,50 @@ let counterName = 0,
     counterDone = 0,
     counterUrgent = 0;
 
+let weather = {
+  "coord": {
+    "lon": 17.03,
+    "lat": 51.1
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 278.15,
+    "pressure": 1025,
+    "humidity": 100,
+    "temp_min": 278.15,
+    "temp_max": 278.15
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 6.7,
+    "deg": 290
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1513870200,
+  "sys": {
+    "type": 1,
+    "id": 5375,
+    "message": 0.0052,
+    "country": "PL",
+    "sunrise": 1513839208,
+    "sunset": 1513867637
+  },
+  "id": 3081368,
+  "name": "Wroclaw",
+  "cod": 200
+}
+
+
 class ToDoList extends React.Component{
   constructor(props){
     super(props);
@@ -18,7 +62,7 @@ class ToDoList extends React.Component{
       checkbox: false,
       fullError: false,
       imageNumber: 221,
-      weather: ''
+      phoneScreen: 'screen1'
     }
   }
 
@@ -32,17 +76,9 @@ class ToDoList extends React.Component{
       {name: "Pobaw się telefonem i odkryj ukryte funkcje! :)", done: "", id: 1514117720590, urgent: "urgent"}
     ];
 
-    let url = `http://api.openweathermap.org/data/2.5/weather?q=${this.props.city}&appid=e79ae7fdae604a770d5aad5b8daea200`;
-
     this.setState({
       list: list
     });
-    fetch(url).then(resp => {
-                  return resp.json();
-             }).then(data => {
-                  return this.setState({weather: data.coord.lon})
-             }).catch(err => console.log(err))
-               // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
   }
 
   componentDidUpdate() {
@@ -213,35 +249,50 @@ class ToDoList extends React.Component{
     }
   }
 
+  handleScreenSlide = () => {
+    let phoneScreen = this.state.phoneScreen;
+    if (phoneScreen === 'screen1') {
+      phoneScreen = 'screen2';
+    } else {
+      phoneScreen = 'screen1';
+    }
+    this.setState({
+      phoneScreen: phoneScreen
+    })
+  }
+
   render(){
     return (
       <div className='main' style={{
         background: `url(./dist/${this.state.imageNumber}.jpg) right center / cover no-repeat fixed`
       }}>
         <div className='phone'>
-          <div className='lefthand'>
-            <ul>
-              <li>
-                <div className='content'>
-                  <AddTaskBar
-                    inputText={this.handleInput}
-                    addTask={this.handleClickAdd}
-                    input={this.state.input}
-                    classToggle={this.checkboxClassToggle}
-                    checkbox={this.state.checkbox}
-                    enterKeyPress={this.handleEnterKey}
-                    inputError={this.state.inputError}/>
-                  <SortButtons
-                    list={this.state.list}
-                    sortByTitle={this.handleSortTitle}
-                    sortByDone={this.handleSortDone}
-                    sortByUrgent={this.handleSortUrgent}
-                    backgroundChange={this.handleBackgroundChange}/>
-                  <SecretButtons backgroundChange={this.handleBackgroundChange}/>
-                </div>
-              </li>
-            </ul>
-          </div>
+          <ul>
+            <li className={`${this.state.phoneScreen} w3-animate-right`}>
+              <div className='content'>
+                <AddTaskBar
+                  inputText={this.handleInput}
+                  addTask={this.handleClickAdd}
+                  input={this.state.input}
+                  classToggle={this.checkboxClassToggle}
+                  checkbox={this.state.checkbox}
+                  enterKeyPress={this.handleEnterKey}
+                  inputError={this.state.inputError}/>
+                <SortButtons
+                  list={this.state.list}
+                  sortByTitle={this.handleSortTitle}
+                  sortByDone={this.handleSortDone}
+                  sortByUrgent={this.handleSortUrgent}
+                  backgroundChange={this.handleBackgroundChange}/>
+              </div>
+            </li>
+            <li className={`${this.state.phoneScreen} w3-animate-left`}>
+              <Weather />
+            </li>
+          </ul>
+          <SecretButtons
+            backgroundChange={this.handleBackgroundChange}
+            slide={this.handleScreenSlide}/>
         </div>
           <div className='paper'>
             <div className='content'>
@@ -264,8 +315,8 @@ class ToDoList extends React.Component{
           </div>
         </div>
       )
-    }
   }
+}
 
 class AddTaskBar extends React.Component{
   render(){
@@ -353,48 +404,6 @@ class SecretButtons extends React.Component {
     )
   }
 }
-
-// class SimpleSlider extends React.Component {
-//   render(){
-//
-//       var settings = {
-//         dots: true,
-//         infinite: true,
-//         speed: 500,
-//         slidesToShow: 1,
-//         slidesToScroll: 1
-//       }
-//       return (
-//         <Slider {...settings}>
-//           <li><img src='../../dist/221.jpg' /></li>
-//           <li><img src='../../dist/222.jpg' /></li>
-//           <li><img src='../../dist/223.jpg' /></li>
-//         </Slider>
-//       );
-//     }
-//   }
-//
-// <li>
-//   <div className='content'>
-//     <AddTaskBar
-//       inputText={this.handleInput}
-//       addTask={this.handleClickAdd}
-//       input={this.state.input}
-//       classToggle={this.checkboxClassToggle}
-//       checkbox={this.state.checkbox}
-//       enterKeyPress={this.handleEnterKey}
-//       inputError={this.state.inputError}/>
-//     <SortButtons
-//       list={this.state.list}
-//       sortByTitle={this.handleSortTitle}
-//       sortByDone={this.handleSortDone}
-//       sortByUrgent={this.handleSortUrgent}/>
-//     <SecretButtons
-//       backgroundChange={this.handleBackgroundChange} />
-//
-//   </div>
-// </li>
-
 
 class App extends React.Component{
   render(){

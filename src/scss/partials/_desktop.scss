@@ -19,7 +19,7 @@ body, #app {
   padding-bottom: 20px;
 }
 
-.lefthand {
+.phone {
   background: url('../../dist/cell.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -32,9 +32,38 @@ body, #app {
 
   ul {
     display: flex;
+    width: 264px;
+    height: 600px;
+    overflow: hidden;
+    position: absolute;
+    left: 39px;
 
     li {
       list-style-type: none;
+
+      &:first-of-type.screen1 {
+        position: relative;
+        transition: left 0.4s;
+        left: 0;
+      }
+
+      &:first-of-type.screen2 {
+        position: relative;
+        transition: left 0.4s;
+        left: -300px;
+      }
+
+      &:last-of-type.screen2 {
+        position: relative;
+        transition: left 0.4s;
+        left: -300px;
+      }
+
+      &:last-of-type.screen1 {
+        position: relative;
+        transition: left 0.4s;
+        left: 0;
+      }
     }
   }
 
@@ -42,11 +71,11 @@ body, #app {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 300px;
+    width: 264px;
     padding-top: 100px;
-    padding-left: 40px;
     text-align: center;
     color: $color-main;
+    position: relative;
 
     .form-inside {
       display: flex;
@@ -99,8 +128,32 @@ body, #app {
   }
 
   .secretButtons {
-    top: 453px;
+    top: 452px;
     left: 55px;
+  }
+
+  .weather {
+    width: 340px;
+    height: 480px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    .icon {
+      margin: 100px auto 10px;
+      width: 128px;
+      height: 128px;
+    }
+
+    .data {
+      text-align: center;
+      color: $color-main;
+
+      h2 {
+        margin-bottom: 10px;
+      }
+    }
   }
 }
 

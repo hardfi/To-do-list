@@ -356,18 +356,18 @@
   .buttonAdd:hover, .sort-buttons > div:hover {
     background-color: rgba(255, 255, 255, 0.5); }
 
-.lefthand {
+.phone {
   z-index: 10;
   position: relative;
   user-select: none;
   font-family: 'Roboto Condensed', sans-serif;
   overflow: hidden;
   position: relative; }
-  .lefthand .noerror {
+  .phone .noerror {
     position: absolute;
     opacity: 0;
     transition: opacity 0.5s linear; }
-  .lefthand .error {
+  .phone .error {
     position: absolute;
     display: flex;
     align-items: center;
@@ -376,47 +376,47 @@
     visibility: visible;
     opacity: 1;
     transition: opacity 0.5s linear; }
-  .lefthand span {
+  .phone span {
     position: absolute; }
-    .lefthand span.wrong {
+    .phone span.wrong {
       color: #fa5757; }
-      .lefthand span.wrong:after {
+      .phone span.wrong:after {
         content: ' !'; }
-  .lefthand h2 {
+  .phone h2 {
     text-transform: uppercase; }
-  .lefthand input {
+  .phone input {
     border: none;
     font-size: 20px;
     background-color: rgba(255, 255, 255, 0.6);
     padding: 3px;
     font-family: 'Roboto Condensed', sans-serif;
     user-select: text; }
-    .lefthand input:focus {
+    .phone input:focus {
       outline: none; }
-  .lefthand .unchecked, .lefthand .checked {
+  .phone .unchecked, .phone .checked {
     cursor: pointer;
     border-radius: 100%; }
-  .lefthand .unchecked {
+  .phone .unchecked {
     background-color: white; }
-  .lefthand .checked {
+  .phone .checked {
     background-color: black;
     box-shadow: inset 0px 0px 0px 5px white; }
-  .lefthand .secretButtons {
+  .phone .secretButtons {
     display: flex;
     margin-top: 45px;
     position: absolute; }
-    .lefthand .secretButtons .secretOne, .lefthand .secretButtons .secretTwo {
+    .phone .secretButtons .secretOne, .phone .secretButtons .secretTwo {
       background-color: transparent;
       width: 18px;
       height: 18px;
       margin-left: 34px;
       border-radius: 100%;
       cursor: pointer; }
-    .lefthand .secretButtons .secretOne {
+    .phone .secretButtons .secretOne {
       margin-left: 34px; }
-    .lefthand .secretButtons .secretTwo {
+    .phone .secretButtons .secretTwo {
       margin-left: 56px; }
-      .lefthand .secretButtons .secretTwo:hover {
+      .phone .secretButtons .secretTwo:hover {
         background-color: white; }
 
 .paper {
@@ -469,7 +469,7 @@
     height: 100%;
     min-height: 100vh;
     padding-bottom: 20px; }
-  .lefthand {
+  .phone {
     background: url("../../dist/cell.png");
     background-size: contain;
     background-repeat: no-repeat;
@@ -479,53 +479,90 @@
     transform: rotate(-8deg);
     animation-name: appear;
     animation-duration: 1s; }
-    .lefthand ul {
-      display: flex; }
-      .lefthand ul li {
+    .phone ul {
+      display: flex;
+      width: 264px;
+      height: 600px;
+      overflow: hidden;
+      position: absolute;
+      left: 39px; }
+      .phone ul li {
         list-style-type: none; }
-    .lefthand .content {
+        .phone ul li:first-of-type.screen1 {
+          position: relative;
+          transition: left 0.4s;
+          left: 0; }
+        .phone ul li:first-of-type.screen2 {
+          position: relative;
+          transition: left 0.4s;
+          left: -300px; }
+        .phone ul li:last-of-type.screen2 {
+          position: relative;
+          transition: left 0.4s;
+          left: -300px; }
+        .phone ul li:last-of-type.screen1 {
+          position: relative;
+          transition: left 0.4s;
+          left: 0; }
+    .phone .content {
       display: flex;
       align-items: center;
       flex-direction: column;
-      width: 300px;
+      width: 264px;
       padding-top: 100px;
-      padding-left: 40px;
       text-align: center;
-      color: white; }
-      .lefthand .content .form-inside {
+      color: white;
+      position: relative; }
+      .phone .content .form-inside {
         display: flex;
         align-items: center;
         flex-direction: column;
         position: relative; }
-        .lefthand .content .form-inside .error {
+        .phone .content .form-inside .error {
           top: -17px;
           left: -20px;
           height: 50px;
           width: 264px; }
-        .lefthand .content .form-inside h2 {
+        .phone .content .form-inside h2 {
           margin: 7px auto; }
-        .lefthand .content .form-inside .unchecked, .lefthand .content .form-inside .checked {
+        .phone .content .form-inside .unchecked, .phone .content .form-inside .checked {
           width: 20px;
           height: 20px; }
-        .lefthand .content .form-inside span {
+        .phone .content .form-inside span {
           top: -35px;
           left: 2px; }
-        .lefthand .content .form-inside input {
+        .phone .content .form-inside input {
           margin: 10px auto;
           width: 220px; }
-        .lefthand .content .form-inside .buttonAdd {
+        .phone .content .form-inside .buttonAdd {
           margin: 15px auto;
           height: 40px;
           font-size: 22px; }
-    .lefthand .sort-buttons {
+    .phone .sort-buttons {
       margin: 10px auto;
       text-transform: uppercase; }
-      .lefthand .sort-buttons .buttonRegural {
+      .phone .sort-buttons .buttonRegural {
         font-size: 18px;
         margin: 5px; }
-    .lefthand .secretButtons {
-      top: 453px;
+    .phone .secretButtons {
+      top: 452px;
       left: 55px; }
+    .phone .weather {
+      width: 340px;
+      height: 480px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column; }
+      .phone .weather .icon {
+        margin: 100px auto 10px;
+        width: 128px;
+        height: 128px; }
+      .phone .weather .data {
+        text-align: center;
+        color: white; }
+        .phone .weather .data h2 {
+          margin-bottom: 10px; }
   .paper {
     background: url("../124.png");
     background-size: contain;
@@ -558,7 +595,7 @@
     height: 100%;
     min-height: 100vh;
     min-width: 100vw; }
-  .lefthand {
+  .phone {
     background: url("../../dist/cell_sm.png");
     background-size: contain;
     background-repeat: no-repeat;
@@ -567,12 +604,12 @@
     height: 350px;
     margin: 0 auto;
     transform: rotate(-2deg); }
-    .lefthand li {
+    .phone li {
       list-style-type: none;
       position: absolute;
       top: 0;
       left: 0; }
-    .lefthand .content {
+    .phone .content {
       padding-top: 46px;
       padding-left: 76px;
       color: white;
@@ -583,47 +620,47 @@
       text-align: center;
       width: 510px;
       margin-top: 23px; }
-      .lefthand .content .noerror {
+      .phone .content .noerror {
         top: 68px;
         left: 145px; }
-      .lefthand .content .error {
+      .phone .content .error {
         top: 64px;
         left: 65px;
         width: 460px;
         height: 34px; }
-      .lefthand .content span {
+      .phone .content span {
         margin-left: 12px;
         top: 46px;
         left: 77px; }
-      .lefthand .content input {
+      .phone .content input {
         margin: 10px 0;
         width: 250px;
         display: block; }
-      .lefthand .content .buttonAdd {
+      .phone .content .buttonAdd {
         height: 30px;
         font-size: 20px;
         width: 250px;
         margin: 8px auto 9px; }
-      .lefthand .content h2 {
+      .phone .content h2 {
         font-size: 20px;
         margin: 3px auto; }
-      .lefthand .content h2:not(:first-of-type) {
+      .phone .content h2:not(:first-of-type) {
         display: inline-block; }
-      .lefthand .content .unchecked, .lefthand .content .checked {
+      .phone .content .unchecked, .phone .content .checked {
         display: inline-block;
         margin-left: 10px;
         width: 17px;
         height: 17px; }
-      .lefthand .content .sort-buttons {
+      .phone .content .sort-buttons {
         text-transform: uppercase;
         display: flex;
         align-items: center;
         margin: 5px; }
-        .lefthand .content .sort-buttons .buttonRegural {
+        .phone .content .sort-buttons .buttonRegural {
           font-size: 18px;
           margin: 5px;
           padding: 5px; }
-      .lefthand .content .secretButtons {
+      .phone .content .secretButtons {
         top: 239px;
         left: 189px; }
   .paper {
