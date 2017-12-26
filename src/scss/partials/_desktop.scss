@@ -1,4 +1,4 @@
-.buttonAdd, .sort-buttons>div {
+.button-add, .sort-buttons>div {
   width: $add-task-big;
 }
 
@@ -20,7 +20,7 @@ body, #app {
 }
 
 .phone {
-  background: url('../../dist/cell.png');
+  background: url('../../dist/img/cell.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -39,27 +39,19 @@ body, #app {
       list-style-type: none;
 
       &:first-of-type.screen1 {
-        position: relative;
-        transition: left 0.4s;
-        left: 0;
+        @include anim(0);
       }
 
       &:first-of-type.screen2 {
-        position: relative;
-        transition: left 0.4s;
-        left: -300px;
+        @include anim(-300px);
       }
 
       &:last-of-type.screen2 {
-        position: relative;
-        transition: left 0.4s;
-        left: -300px;
+        @include anim(-300px);
       }
 
       &:last-of-type.screen1 {
-        position: relative;
-        transition: left 0.4s;
-        left: 0;
+        @include anim(0);
       }
     }
   }
@@ -106,7 +98,7 @@ body, #app {
         width: $add-task-big;
       }
 
-      .buttonAdd {
+      .button-add {
         margin: 15px auto;
         height: 40px;
         font-size: 22px;
@@ -137,8 +129,23 @@ body, #app {
     align-items: center;
     flex-direction: column;
 
+    &>h3 {
+      margin: 100px 0 0 0;
+      text-transform: uppercase;
+      color: $color-main;
+      font-size: 24px;
+    }
+
+    .error {
+      top: 83px;
+      left: 37px;
+      height: 50px;
+      width: 267px;
+      color: $color-main;
+    }
+
     .icon {
-      margin: 100px auto 10px;
+      margin: 10px auto 10px;
       width: 128px;
       height: 128px;
     }
@@ -151,11 +158,27 @@ body, #app {
         margin-bottom: 10px;
       }
     }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      input {
+        margin: 20px 0 10px 0;
+        width: $weather-input;
+      }
+
+      .button-add {
+        width: $weather-input;
+        height: 30px;
+      }
+    }
   }
 }
 
 .paper {
-  background: url('../124.png');
+  background: url('../img/124.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;

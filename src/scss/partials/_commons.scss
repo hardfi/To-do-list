@@ -1,6 +1,7 @@
+$color-main: white;
 $add-task-big: 220px;
 $add-task-small: 250px;
-$color-main: white;
+$weather-input: 180px;
 
 * {
   padding: 0;
@@ -10,6 +11,12 @@ $color-main: white;
   &::selection {
     background: rgb(176, 176, 176);
   }
+}
+
+@mixin anim($left) {
+  position: relative;
+  transition: left 0.4s;
+  left: $left;
 }
 
 @keyframes appear {
@@ -22,7 +29,7 @@ $color-main: white;
   to {visibility: visible; opacity: 1}
 }
 
-.buttonAdd, .sort-buttons>div {
+.button-add, .sort-buttons>div {
 
   text-transform: uppercase;
   display: flex;
@@ -32,9 +39,23 @@ $color-main: white;
   padding: 3px;
   background-color: rgba(255, 255, 255, 0.4);
   cursor: pointer;
+  color: $color-main;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+input {
+  border: none;
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.60);
+  padding: 3px;
+  font-family: 'Roboto Condensed', sans-serif;
+  user-select: text;
+
+  &:focus {
+    outline: none;
   }
 }
 
@@ -83,19 +104,6 @@ $color-main: white;
 
   h2 {
     text-transform: uppercase;
-  }
-
-  input {
-    border: none;
-    font-size: 20px;
-    background-color: rgba(255, 255, 255, 0.60);
-    padding: 3px;
-    font-family: 'Roboto Condensed', sans-serif;
-    user-select: text;
-
-    &:focus {
-      outline: none;
-    }
   }
 
   .unchecked, .checked {

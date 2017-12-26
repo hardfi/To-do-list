@@ -1,56 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FlipMove from 'react-flip-move';
-import Slider from 'react-slick';
 import Weather from './weather/Weather.jsx'
 
 let counterName = 0,
     counterDone = 0,
     counterUrgent = 0;
-
-let weather = {
-  "coord": {
-    "lon": 17.03,
-    "lat": 51.1
-  },
-  "weather": [
-    {
-      "id": 803,
-      "main": "Clouds",
-      "description": "broken clouds",
-      "icon": "04n"
-    }
-  ],
-  "base": "stations",
-  "main": {
-    "temp": 278.15,
-    "pressure": 1025,
-    "humidity": 100,
-    "temp_min": 278.15,
-    "temp_max": 278.15
-  },
-  "visibility": 10000,
-  "wind": {
-    "speed": 6.7,
-    "deg": 290
-  },
-  "clouds": {
-    "all": 75
-  },
-  "dt": 1513870200,
-  "sys": {
-    "type": 1,
-    "id": 5375,
-    "message": 0.0052,
-    "country": "PL",
-    "sunrise": 1513839208,
-    "sunset": 1513867637
-  },
-  "id": 3081368,
-  "name": "Wroclaw",
-  "cod": 200
-}
-
 
 class ToDoList extends React.Component{
   constructor(props){
@@ -264,7 +219,7 @@ class ToDoList extends React.Component{
   render(){
     return (
       <div className='main' style={{
-        background: `url(./dist/${this.state.imageNumber}.jpg) right center / cover no-repeat fixed`
+        background: `url(./dist/img/${this.state.imageNumber}.jpg) right center / cover no-repeat fixed`
       }}>
         <div className='phone'>
           <ul>
@@ -350,7 +305,7 @@ class AddTaskBar extends React.Component{
           onClick={this.props.classToggle}
           className={this.props.checkbox ? 'checked' : 'unchecked'}>
         </div>
-        <div className='buttonAdd'
+        <div className='button-add'
           onClick={this.props.addTask}>
           Dodaj</div>
       </div>

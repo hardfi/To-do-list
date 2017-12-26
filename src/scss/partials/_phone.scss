@@ -14,7 +14,7 @@ body, #app {
 }
 
 .phone {
-  background: url('../../dist/cell_sm.png');
+  background: url('../../dist/img/cell_sm.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -36,27 +36,19 @@ body, #app {
       left: 0;
 
       &:first-of-type.screen1 {
-        position: relative;
-        transition: left 0.4s;
-        left: 0;
+        @include anim(0);
       }
 
       &:first-of-type.screen2 {
-        position: relative;
-        transition: left 0.4s;
-        left: -460px;
+        @include anim(-460px);
       }
 
       &:last-of-type.screen2 {
-        position: relative;
-        transition: left 0.4s;
-        left: -460px;
+        @include anim(-460px);
       }
 
       &:last-of-type.screen1 {
-        position: relative;
-        transition: left 0.4s;
-        left: 0;
+        @include anim(0);
       }
     }
   }
@@ -89,7 +81,7 @@ body, #app {
       display: block;
     }
 
-    .buttonAdd {
+    .button-add {
       height: 30px;
       font-size: 20px;
       width: $add-task-small;
@@ -158,7 +150,7 @@ body, #app {
 
 .paper {
   transform: rotate(1deg);
-  background: url('../124.png');
+  background: url('../img/124.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;

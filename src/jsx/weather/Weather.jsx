@@ -4,50 +4,90 @@ class Weather extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      weather: false
+      weather: false,
+      input: '',
+      error: ''
     }
   }
 
-  updateWeather = () => {
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=Katowice&appid=c25f3c202404d3738117f9c16f15bb2e&lang=pl&units=metric`;
+  updateWeather = (city) => {
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c25f3c202404d3738117f9c16f15bb2e&lang=pl&units=metric`;
 
     fetch(url).then(resp => {
       return resp.json();
     }).then(data => {
-      return this.setState({weather: data});
+      if (data.name === undefined) {
+        this.setState({error: 'Nie można znaleźć tego miasta'})
+      } else {
+        return this.setState({weather: data, error: ''});
+      }
     }).catch(err => console.log(err))
-    // this.setState({weather: "Takiego miasta nie umiem znaleźć..."});
   }
 
   componentWillMount() {
-    this.updateWeather();
+    if (this.state.input === '') {
+      this.updateWeather('Katowice');
       setInterval(() => {
-        this.updateWeather();
-      }, 900000); // 15 minutes weather update
+        this.updateWeather('Katowice');
+      }, 900000); // weather update every 15 minutes
+    } else {
+      this.updateWeather(this.state.input);
+      setInterval(() => {
+        this.updateWeather(this.state.input);
+      }, 900000); // weather update every 15 minutes
+    }
+  }
+
+  handleInput = (event) => {
+    this.setState({
+      input: event.target.value
+    })
+  }
+
+  handleEnterKey = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      this.updateWeather(this.state.input);
+    }
+  }
+
+  handleClick = () => {
+    this.updateWeather(this.state.input)
   }
 
   render(){
-    if (this.state.weather) {
-      let object = this.state.weather;
-      let temp = Math.round(this.state.weather.main.temp);
+    let object = this.state.weather;
+    if (object.main !== undefined) {
+      let temp = Math.round(object.main.temp);
       return (
         <div className='weather'>
+          <div className={this.state.error == '' ? 'noerror' : 'error'}>{this.state.error}</div>
+          <h3>{object.name}</h3>
           <div className='icon' style={{
               background: `url(./dist/icons/${object.weather[0].icon}.png)`,
             }}>
           </div>
           <div className='data'>
             <h2>{object.weather[0].description}</h2>
-            <h3>Temp: {temp}&#176;C </h3>
-            <h3>Ciśnienie: {object.main.pressure}hPa</h3>
-            <h3>Wiatr: {object.wind.speed}m/s</h3>
+            <h3>Temperatura: {temp}&#176;C </h3>
+            <h3>Ciśnienie: {object.main.pressure} hPa</h3>
+            <h3>Wiatr: {object.wind.speed} m/s</h3>
+          </div>
+          <div className='form'>
+            <input
+              type='text'
+              placeholder='Wpisz miasto'
+              onChange={this.handleInput}
+              value={this.state.input}
+              onKeyPress={e => this.handleEnterKey(e)}/>
+            <div className='button-add' onClick={this.handleClick}>Pokaż</div>
           </div>
         </div>
       )
     } else {
       return (
         <div className='weather'>
-          <h3 className='icon'>Nie udało się załadować pogody :(</h3>
+          <h3 className='icon'>Nie ma takiego miasta :(</h3>
         </div>
       )
     }
