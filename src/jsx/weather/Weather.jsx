@@ -8,7 +8,7 @@ class Weather extends React.Component{
     }
   }
 
-  componentWillMount() {
+  updateWeather = () => {
     let url = `https://api.openweathermap.org/data/2.5/weather?q=Katowice&appid=c25f3c202404d3738117f9c16f15bb2e&lang=pl&units=metric`;
 
     fetch(url).then(resp => {
@@ -16,11 +16,17 @@ class Weather extends React.Component{
     }).then(data => {
       return this.setState({weather: data});
     }).catch(err => console.log(err))
-    // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
+    // this.setState({weather: "Takiego miasta nie umiem znaleźć..."});
+  }
+
+  componentWillMount() {
+    this.updateWeather();
+      setInterval(() => {
+        this.updateWeather();
+      }, 900000); // 15 minutes weather update
   }
 
   render(){
-
     if (this.state.weather) {
       let object = this.state.weather;
       let temp = Math.round(this.state.weather.main.temp);
@@ -39,56 +45,13 @@ class Weather extends React.Component{
         </div>
       )
     } else {
-      return null;
+      return (
+        <div className='weather'>
+          <h3 className='icon'>Nie udało się załadować pogody :(</h3>
+        </div>
+      )
     }
   }
 }
 
 export default Weather
-
-/*
-
-
-{
-  "coord": {
-    "lon": 17.03,
-    "lat": 51.1
-  },
-  "weather": [
-    {
-      "id": 803,
-      "main": "Clouds",
-      "description": "broken clouds",
-      "icon": "04n"
-    }
-  ],
-  "base": "stations",
-  "main": {
-    "temp": 278.15,
-    "pressure": 1025,
-    "humidity": 100,
-    "temp_min": 278.15,
-    "temp_max": 278.15
-  },
-  "visibility": 10000,
-  "wind": {
-    "speed": 6.7,
-    "deg": 290
-  },
-  "clouds": {
-    "all": 75
-  },
-  "dt": 1513870200,
-  "sys": {
-    "type": 1,
-    "id": 5375,
-    "message": 0.0052,
-    "country": "PL",
-    "sunrise": 1513839208,
-    "sunset": 1513867637
-  },
-  "id": 3081368,
-  "name": "Wroclaw",
-  "cod": 200
-}
-*/

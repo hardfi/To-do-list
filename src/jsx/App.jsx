@@ -268,7 +268,7 @@ class ToDoList extends React.Component{
       }}>
         <div className='phone'>
           <ul>
-            <li className={`${this.state.phoneScreen} w3-animate-right`}>
+            <li className={`${this.state.phoneScreen}`}>
               <div className='content'>
                 <AddTaskBar
                   inputText={this.handleInput}
@@ -286,7 +286,7 @@ class ToDoList extends React.Component{
                   backgroundChange={this.handleBackgroundChange}/>
               </div>
             </li>
-            <li className={`${this.state.phoneScreen} w3-animate-left`}>
+            <li className={`${this.state.phoneScreen}`}>
               <Weather />
             </li>
           </ul>

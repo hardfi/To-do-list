@@ -46,6 +46,12 @@ $color-main: white;
   overflow: hidden;
   position: relative;
 
+  ul {
+    display: flex;
+    overflow: hidden;
+    position: absolute;
+  }
+
   .noerror {
     position: absolute;
     opacity: 0;
@@ -108,7 +114,6 @@ $color-main: white;
 
   .secretButtons {
     display: flex;
-    margin-top: 45px;
     position: absolute;
 
     .secretTwo {

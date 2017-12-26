@@ -12042,7 +12042,7 @@ var ToDoList = function (_React$Component) {
             null,
             _react2.default.createElement(
               'li',
-              { className: this.state.phoneScreen + ' w3-animate-right' },
+              { className: '' + this.state.phoneScreen },
               _react2.default.createElement(
                 'div',
                 { className: 'content' },
@@ -12064,7 +12064,7 @@ var ToDoList = function (_React$Component) {
             ),
             _react2.default.createElement(
               'li',
-              { className: this.state.phoneScreen + ' w3-animate-left' },
+              { className: '' + this.state.phoneScreen },
               _react2.default.createElement(_Weather2.default, null)
             )
           ),
@@ -27163,6 +27163,19 @@ var Weather = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).call(this, props));
 
+    _this.updateWeather = function () {
+      var url = 'https://api.openweathermap.org/data/2.5/weather?q=Katowice&appid=c25f3c202404d3738117f9c16f15bb2e&lang=pl&units=metric';
+
+      fetch(url).then(function (resp) {
+        return resp.json();
+      }).then(function (data) {
+        return _this.setState({ weather: data });
+      }).catch(function (err) {
+        return console.log(err);
+      });
+      // this.setState({weather: "Takiego miasta nie umiem znaleźć..."});
+    };
+
     _this.state = {
       weather: false
     };
@@ -27174,21 +27187,14 @@ var Weather = function (_React$Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      var url = 'https://api.openweathermap.org/data/2.5/weather?q=Katowice&appid=c25f3c202404d3738117f9c16f15bb2e&lang=pl&units=metric';
-
-      fetch(url).then(function (resp) {
-        return resp.json();
-      }).then(function (data) {
-        return _this2.setState({ weather: data });
-      }).catch(function (err) {
-        return console.log(err);
-      });
-      // this.setState({weather: "Takiego miasta nie umiem znaleźć...";
+      this.updateWeather();
+      setInterval(function () {
+        _this2.updateWeather();
+      }, 900000); // 15 minutes weather update
     }
   }, {
     key: 'render',
     value: function render() {
-
       if (this.state.weather) {
         var object = this.state.weather;
         var temp = Math.round(this.state.weather.main.temp);
@@ -27230,7 +27236,15 @@ var Weather = function (_React$Component) {
           )
         );
       } else {
-        return null;
+        return _react2.default.createElement(
+          'div',
+          { className: 'weather' },
+          _react2.default.createElement(
+            'h3',
+            { className: 'icon' },
+            'Nie uda\u0142o si\u0119 za\u0142adowa\u0107 pogody :('
+          )
+        );
       }
     }
   }]);
@@ -27239,53 +27253,6 @@ var Weather = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Weather;
-
-/*
-
-
-{
-  "coord": {
-    "lon": 17.03,
-    "lat": 51.1
-  },
-  "weather": [
-    {
-      "id": 803,
-      "main": "Clouds",
-      "description": "broken clouds",
-      "icon": "04n"
-    }
-  ],
-  "base": "stations",
-  "main": {
-    "temp": 278.15,
-    "pressure": 1025,
-    "humidity": 100,
-    "temp_min": 278.15,
-    "temp_max": 278.15
-  },
-  "visibility": 10000,
-  "wind": {
-    "speed": 6.7,
-    "deg": 290
-  },
-  "clouds": {
-    "all": 75
-  },
-  "dt": 1513870200,
-  "sys": {
-    "type": 1,
-    "id": 5375,
-    "message": 0.0052,
-    "country": "PL",
-    "sunrise": 1513839208,
-    "sunset": 1513867637
-  },
-  "id": 3081368,
-  "name": "Wroclaw",
-  "cod": 200
-}
-*/
 
 /***/ }),
 /* 216 */
