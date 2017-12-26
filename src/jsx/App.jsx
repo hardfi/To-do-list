@@ -364,7 +364,7 @@ class App extends React.Component{
   render(){
     return (
       <div>
-        <ToDoList city="Wroclaw"/>
+        <ToDoList />
       </div>
     )
 

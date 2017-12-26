@@ -6,7 +6,8 @@ class Weather extends React.Component{
     this.state = {
       weather: false,
       input: '',
-      error: ''
+      error: '',
+      city: ''
     }
   }
 
@@ -16,26 +17,29 @@ class Weather extends React.Component{
     fetch(url).then(resp => {
       return resp.json();
     }).then(data => {
-      if (data.name === undefined) {
+      if (data.name === undefined) { // if server response has no city name = wrong city
         this.setState({error: 'Nie można znaleźć tego miasta'})
       } else {
-        return this.setState({weather: data, error: ''});
+        return this.setState({
+          weather: data,
+          error: '',
+          city: data.name,
+          input: ''
+        }, () => this.saveCityToLocalStorage()); // after updating city in state, city is saved to local storage
       }
-    }).catch(err => console.log(err))
+    }).catch(err => console.log(err));
   }
 
   componentWillMount() {
-    if (this.state.input === '') {
-      this.updateWeather('Katowice');
+    let city = JSON.parse(localStorage.getItem('city')) || 'Wroclaw';
+    this.updateWeather(city);
+    this.setState({
+      city: city
+    }, () => {
       setInterval(() => {
-        this.updateWeather('Katowice');
-      }, 900000); // weather update every 15 minutes
-    } else {
-      this.updateWeather(this.state.input);
-      setInterval(() => {
-        this.updateWeather(this.state.input);
-      }, 900000); // weather update every 15 minutes
-    }
+      this.updateWeather(this.state.city);
+      }, 900000)} // weather update every 15 minutes
+    )
   }
 
   handleInput = (event) => {
@@ -52,17 +56,22 @@ class Weather extends React.Component{
   }
 
   handleClick = () => {
-    this.updateWeather(this.state.input)
+    this.updateWeather(this.state.input);
+  }
+
+  saveCityToLocalStorage() {
+    localStorage.setItem('city', JSON.stringify(this.state.city));
   }
 
   render(){
     let object = this.state.weather;
-    if (object.main !== undefined) {
+    if (object) {
       let temp = Math.round(object.main.temp);
+      let pressure = Math.round(object.main.pressure)
       return (
         <div className='weather'>
           <div className={this.state.error == '' ? 'noerror' : 'error'}>{this.state.error}</div>
-          <h3>{object.name}</h3>
+          <h2>{object.name}</h2>
           <div className='icon' style={{
               background: `url(./dist/icons/${object.weather[0].icon}.png)`,
             }}>
@@ -70,7 +79,7 @@ class Weather extends React.Component{
           <div className='data'>
             <h2>{object.weather[0].description}</h2>
             <h3>Temperatura: {temp}&#176;C </h3>
-            <h3>Ciśnienie: {object.main.pressure} hPa</h3>
+            <h3>Ciśnienie: {pressure} hPa</h3>
             <h3>Wiatr: {object.wind.speed} m/s</h3>
           </div>
           <div className='form'>
@@ -85,11 +94,7 @@ class Weather extends React.Component{
         </div>
       )
     } else {
-      return (
-        <div className='weather'>
-          <h3 className='icon'>Nie ma takiego miasta :(</h3>
-        </div>
-      )
+      return null;
     }
   }
 }

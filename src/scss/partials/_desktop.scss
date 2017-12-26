@@ -128,12 +128,11 @@ body, #app {
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    color: $color-main;
 
-    &>h3 {
+    &>h2 {
       margin: 100px 0 0 0;
       text-transform: uppercase;
-      color: $color-main;
-      font-size: 24px;
     }
 
     .error {
@@ -141,7 +140,6 @@ body, #app {
       left: 37px;
       height: 50px;
       width: 267px;
-      color: $color-main;
     }
 
     .icon {
@@ -152,7 +150,6 @@ body, #app {
 
     .data {
       text-align: center;
-      color: $color-main;
 
       h2 {
         margin-bottom: 10px;

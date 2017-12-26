@@ -10688,7 +10688,7 @@ var App = function (_React$Component6) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(ToDoList, { city: 'Wroclaw' })
+        _react2.default.createElement(ToDoList, null)
       );
     }
   }]);
@@ -24727,9 +24727,17 @@ var Weather = function (_React$Component) {
         return resp.json();
       }).then(function (data) {
         if (data.name === undefined) {
+          // if server response has no city name = wrong city
           _this.setState({ error: 'Nie można znaleźć tego miasta' });
         } else {
-          return _this.setState({ weather: data, error: '' });
+          return _this.setState({
+            weather: data,
+            error: '',
+            city: data.name,
+            input: ''
+          }, function () {
+            return _this.saveCityToLocalStorage();
+          }); // after updating city in state, city is saved to local storage
         }
       }).catch(function (err) {
         return console.log(err);
@@ -24756,7 +24764,8 @@ var Weather = function (_React$Component) {
     _this.state = {
       weather: false,
       input: '',
-      error: ''
+      error: '',
+      city: ''
     };
     return _this;
   }
@@ -24766,17 +24775,21 @@ var Weather = function (_React$Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      if (this.state.input === '') {
-        this.updateWeather('Katowice');
+      var city = JSON.parse(localStorage.getItem('city')) || 'Wroclaw';
+      this.updateWeather(city);
+      this.setState({
+        city: city
+      }, function () {
         setInterval(function () {
-          _this2.updateWeather('Katowice');
-        }, 900000); // weather update every 15 minutes
-      } else {
-        this.updateWeather(this.state.input);
-        setInterval(function () {
-          _this2.updateWeather(_this2.state.input);
-        }, 900000); // weather update every 15 minutes
-      }
+          _this2.updateWeather(_this2.state.city);
+        }, 900000);
+      } // weather update every 15 minutes
+      );
+    }
+  }, {
+    key: 'saveCityToLocalStorage',
+    value: function saveCityToLocalStorage() {
+      localStorage.setItem('city', JSON.stringify(this.state.city));
     }
   }, {
     key: 'render',
@@ -24784,8 +24797,9 @@ var Weather = function (_React$Component) {
       var _this3 = this;
 
       var object = this.state.weather;
-      if (object.main !== undefined) {
+      if (object) {
         var temp = Math.round(object.main.temp);
+        var pressure = Math.round(object.main.pressure);
         return _react2.default.createElement(
           'div',
           { className: 'weather' },
@@ -24795,7 +24809,7 @@ var Weather = function (_React$Component) {
             this.state.error
           ),
           _react2.default.createElement(
-            'h3',
+            'h2',
             null,
             object.name
           ),
@@ -24821,7 +24835,7 @@ var Weather = function (_React$Component) {
               'h3',
               null,
               'Ci\u015Bnienie: ',
-              object.main.pressure,
+              pressure,
               ' hPa'
             ),
             _react2.default.createElement(
@@ -24851,15 +24865,7 @@ var Weather = function (_React$Component) {
           )
         );
       } else {
-        return _react2.default.createElement(
-          'div',
-          { className: 'weather' },
-          _react2.default.createElement(
-            'h3',
-            { className: 'icon' },
-            'Nie ma takiego miasta :('
-          )
-        );
+        return null;
       }
     }
   }]);
