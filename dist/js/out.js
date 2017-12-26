@@ -10166,9 +10166,25 @@ var _reactFlipMove = __webpack_require__(187);
 
 var _reactFlipMove2 = _interopRequireDefault(_reactFlipMove);
 
-var _Weather = __webpack_require__(194);
+var _Weather = __webpack_require__(205);
 
 var _Weather2 = _interopRequireDefault(_Weather);
+
+var _Task = __webpack_require__(206);
+
+var _Task2 = _interopRequireDefault(_Task);
+
+var _AddTask = __webpack_require__(203);
+
+var _AddTask2 = _interopRequireDefault(_AddTask);
+
+var _SecretButtons = __webpack_require__(204);
+
+var _SecretButtons2 = _interopRequireDefault(_SecretButtons);
+
+var _SortButtons = __webpack_require__(207);
+
+var _SortButtons2 = _interopRequireDefault(_SortButtons);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10414,7 +10430,7 @@ var ToDoList = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'content' },
-                _react2.default.createElement(AddTaskBar, {
+                _react2.default.createElement(_AddTask2.default, {
                   inputText: this.handleInput,
                   addTask: this.handleClickAdd,
                   input: this.state.input,
@@ -10422,7 +10438,7 @@ var ToDoList = function (_React$Component) {
                   checkbox: this.state.checkbox,
                   enterKeyPress: this.handleEnterKey,
                   inputError: this.state.inputError }),
-                _react2.default.createElement(SortButtons, {
+                _react2.default.createElement(_SortButtons2.default, {
                   list: this.state.list,
                   sortByTitle: this.handleSortTitle,
                   sortByDone: this.handleSortDone,
@@ -10436,7 +10452,7 @@ var ToDoList = function (_React$Component) {
               _react2.default.createElement(_Weather2.default, null)
             )
           ),
-          _react2.default.createElement(SecretButtons, {
+          _react2.default.createElement(_SecretButtons2.default, {
             backgroundChange: this.handleBackgroundChange,
             slide: this.handleScreenSlide })
         ),
@@ -10458,7 +10474,7 @@ var ToDoList = function (_React$Component) {
                 _reactFlipMove2.default,
                 { duration: 500, easing: 'ease-out' },
                 this.state.list.map(function (elem) {
-                  return _react2.default.createElement(SingleTask, {
+                  return _react2.default.createElement(_Task2.default, {
                     task: elem,
                     key: elem.id,
                     clickDone: _this2.handleClickDone,
@@ -10476,205 +10492,8 @@ var ToDoList = function (_React$Component) {
   return ToDoList;
 }(_react2.default.Component);
 
-var AddTaskBar = function (_React$Component2) {
-  _inherits(AddTaskBar, _React$Component2);
-
-  function AddTaskBar() {
-    _classCallCheck(this, AddTaskBar);
-
-    return _possibleConstructorReturn(this, (AddTaskBar.__proto__ || Object.getPrototypeOf(AddTaskBar)).apply(this, arguments));
-  }
-
-  _createClass(AddTaskBar, [{
-    key: 'render',
-    value: function render() {
-      var _this4 = this;
-
-      var spanClass = 'wrong';
-      if (this.props.input.length < 4 || this.props.input.length > 60) {
-        spanClass = 'wrong';
-      } else {
-        spanClass = 'right';
-      }
-
-      var errorClass = '';
-      if (this.props.inputError) {
-        errorClass = "error";
-      } else {
-        errorClass = "noerror";
-      }
-
-      return _react2.default.createElement(
-        'div',
-        { className: 'form-inside' },
-        _react2.default.createElement(
-          'div',
-          { className: errorClass },
-          'Zadanie musi mie\u0107 od 4 do 60 znak\xF3w.'
-        ),
-        _react2.default.createElement(
-          'span',
-          { className: spanClass },
-          this.props.input.length
-        ),
-        _react2.default.createElement(
-          'h2',
-          null,
-          'nowe zadanie:'
-        ),
-        _react2.default.createElement('input', {
-          type: 'text',
-          onChange: this.props.inputText,
-          value: this.props.input,
-          onKeyPress: function onKeyPress(e) {
-            return _this4.props.enterKeyPress(e);
-          } }),
-        _react2.default.createElement(
-          'h2',
-          null,
-          'wa\u017Cne?'
-        ),
-        _react2.default.createElement('div', {
-          onClick: this.props.classToggle,
-          className: this.props.checkbox ? 'checked' : 'unchecked' }),
-        _react2.default.createElement(
-          'div',
-          { className: 'button-add',
-            onClick: this.props.addTask },
-          'Dodaj'
-        )
-      );
-    }
-  }]);
-
-  return AddTaskBar;
-}(_react2.default.Component);
-
-var SingleTask = function (_React$Component3) {
-  _inherits(SingleTask, _React$Component3);
-
-  function SingleTask() {
-    _classCallCheck(this, SingleTask);
-
-    return _possibleConstructorReturn(this, (SingleTask.__proto__ || Object.getPrototypeOf(SingleTask)).apply(this, arguments));
-  }
-
-  _createClass(SingleTask, [{
-    key: 'render',
-    value: function render() {
-      var _this6 = this;
-
-      var task = this.props.task;
-
-      return _react2.default.createElement(
-        'li',
-        { key: task.id, className: task.done + ' ' + task.urgent },
-        _react2.default.createElement(
-          'h3',
-          { className: 'button-done', onClick: function onClick() {
-              return _this6.props.clickDone(task.id);
-            } },
-          '- ',
-          task.name
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'buttons' },
-          _react2.default.createElement(
-            'h5',
-            { className: 'button-urgent', onClick: function onClick() {
-                return _this6.props.clickUrgent(task.id);
-              } },
-            'wa\u017Cne!'
-          ),
-          _react2.default.createElement(
-            'h5',
-            { className: 'button-delete', onClick: function onClick() {
-                return _this6.props.clickDelete(task.id);
-              } },
-            'usu\u0144'
-          )
-        )
-      );
-    }
-  }]);
-
-  return SingleTask;
-}(_react2.default.Component);
-
-var SortButtons = function (_React$Component4) {
-  _inherits(SortButtons, _React$Component4);
-
-  function SortButtons() {
-    _classCallCheck(this, SortButtons);
-
-    return _possibleConstructorReturn(this, (SortButtons.__proto__ || Object.getPrototypeOf(SortButtons)).apply(this, arguments));
-  }
-
-  _createClass(SortButtons, [{
-    key: 'render',
-    value: function render() {
-
-      if (this.props.list.length > 1) {
-        return _react2.default.createElement(
-          'div',
-          { className: 'sort-buttons' },
-          _react2.default.createElement(
-            'h3',
-            null,
-            'Sortuj zadania:'
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'buttonRegural', onClick: this.props.sortByTitle },
-            'Nazwa'
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'buttonRegural', onClick: this.props.sortByDone },
-            'Wykonane'
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'buttonRegural', onClick: this.props.sortByUrgent },
-            'Wa\u017Cne'
-          )
-        );
-      } else {
-        return null;
-      }
-    }
-  }]);
-
-  return SortButtons;
-}(_react2.default.Component);
-
-var SecretButtons = function (_React$Component5) {
-  _inherits(SecretButtons, _React$Component5);
-
-  function SecretButtons() {
-    _classCallCheck(this, SecretButtons);
-
-    return _possibleConstructorReturn(this, (SecretButtons.__proto__ || Object.getPrototypeOf(SecretButtons)).apply(this, arguments));
-  }
-
-  _createClass(SecretButtons, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: 'secretButtons' },
-        _react2.default.createElement('div', { className: 'secretOne', onClick: this.props.slide }),
-        _react2.default.createElement('div', { className: 'secretTwo', onClick: this.props.backgroundChange })
-      );
-    }
-  }]);
-
-  return SecretButtons;
-}(_react2.default.Component);
-
-var App = function (_React$Component6) {
-  _inherits(App, _React$Component6);
+var App = function (_React$Component2) {
+  _inherits(App, _React$Component2);
 
   function App() {
     _classCallCheck(this, App);
@@ -24688,7 +24507,173 @@ var createTransitionString = exports.createTransitionString = function createTra
 };
 
 /***/ }),
-/* 194 */
+/* 194 */,
+/* 195 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(24);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AddTaskBar = function (_React$Component) {
+  _inherits(AddTaskBar, _React$Component);
+
+  function AddTaskBar() {
+    _classCallCheck(this, AddTaskBar);
+
+    return _possibleConstructorReturn(this, (AddTaskBar.__proto__ || Object.getPrototypeOf(AddTaskBar)).apply(this, arguments));
+  }
+
+  _createClass(AddTaskBar, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var spanClass = 'wrong';
+      if (this.props.input.length < 4 || this.props.input.length > 60) {
+        spanClass = 'wrong';
+      } else {
+        spanClass = 'right';
+      }
+
+      var errorClass = '';
+      if (this.props.inputError) {
+        errorClass = "error";
+      } else {
+        errorClass = "noerror";
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'form-inside' },
+        _react2.default.createElement(
+          'div',
+          { className: errorClass },
+          'Zadanie musi mie\u0107 od 4 do 60 znak\xF3w.'
+        ),
+        _react2.default.createElement(
+          'span',
+          { className: spanClass },
+          this.props.input.length
+        ),
+        _react2.default.createElement(
+          'h2',
+          null,
+          'nowe zadanie:'
+        ),
+        _react2.default.createElement('input', {
+          type: 'text',
+          onChange: this.props.inputText,
+          value: this.props.input,
+          onKeyPress: function onKeyPress(e) {
+            return _this2.props.enterKeyPress(e);
+          } }),
+        _react2.default.createElement(
+          'h2',
+          null,
+          'wa\u017Cne?'
+        ),
+        _react2.default.createElement('div', {
+          onClick: this.props.classToggle,
+          className: this.props.checkbox ? 'checked' : 'unchecked' }),
+        _react2.default.createElement(
+          'div',
+          { className: 'button-add',
+            onClick: this.props.addTask },
+          'Dodaj'
+        )
+      );
+    }
+  }]);
+
+  return AddTaskBar;
+}(_react2.default.Component);
+
+exports.default = AddTaskBar;
+
+/***/ }),
+/* 204 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(24);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SecretButtons = function (_React$Component) {
+  _inherits(SecretButtons, _React$Component);
+
+  function SecretButtons() {
+    _classCallCheck(this, SecretButtons);
+
+    return _possibleConstructorReturn(this, (SecretButtons.__proto__ || Object.getPrototypeOf(SecretButtons)).apply(this, arguments));
+  }
+
+  _createClass(SecretButtons, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'secretButtons' },
+        _react2.default.createElement('div', { className: 'secretOne', onClick: this.props.slide }),
+        _react2.default.createElement('div', { className: 'secretTwo', onClick: this.props.backgroundChange })
+      );
+    }
+  }]);
+
+  return SecretButtons;
+}(_react2.default.Component);
+
+exports.default = SecretButtons;
+
+/***/ }),
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24876,10 +24861,156 @@ var Weather = function (_React$Component) {
 exports.default = Weather;
 
 /***/ }),
-/* 195 */
-/***/ (function(module, exports) {
+/* 206 */
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(24);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SingleTask = function (_React$Component) {
+  _inherits(SingleTask, _React$Component);
+
+  function SingleTask() {
+    _classCallCheck(this, SingleTask);
+
+    return _possibleConstructorReturn(this, (SingleTask.__proto__ || Object.getPrototypeOf(SingleTask)).apply(this, arguments));
+  }
+
+  _createClass(SingleTask, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var task = this.props.task;
+      return _react2.default.createElement(
+        'li',
+        { key: task.id, className: task.done + ' ' + task.urgent },
+        _react2.default.createElement(
+          'h3',
+          { className: 'button-done', onClick: function onClick() {
+              return _this2.props.clickDone(task.id);
+            } },
+          '- ',
+          task.name
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'buttons' },
+          _react2.default.createElement(
+            'h5',
+            { className: 'button-urgent', onClick: function onClick() {
+                return _this2.props.clickUrgent(task.id);
+              } },
+            'wa\u017Cne!'
+          ),
+          _react2.default.createElement(
+            'h5',
+            { className: 'button-delete', onClick: function onClick() {
+                return _this2.props.clickDelete(task.id);
+              } },
+            'usu\u0144'
+          )
+        )
+      );
+    }
+  }]);
+
+  return SingleTask;
+}(_react2.default.Component);
+
+exports.default = SingleTask;
+
+/***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(24);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SortButtons = function (_React$Component) {
+  _inherits(SortButtons, _React$Component);
+
+  function SortButtons() {
+    _classCallCheck(this, SortButtons);
+
+    return _possibleConstructorReturn(this, (SortButtons.__proto__ || Object.getPrototypeOf(SortButtons)).apply(this, arguments));
+  }
+
+  _createClass(SortButtons, [{
+    key: 'render',
+    value: function render() {
+
+      if (this.props.list.length > 1) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'sort-buttons' },
+          _react2.default.createElement(
+            'h3',
+            null,
+            'Sortuj zadania:'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'buttonRegural', onClick: this.props.sortByTitle },
+            'Nazwa'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'buttonRegural', onClick: this.props.sortByDone },
+            'Wykonane'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'buttonRegural', onClick: this.props.sortByUrgent },
+            'Wa\u017Cne'
+          )
+        );
+      } else {
+        return null;
+      }
+    }
+  }]);
+
+  return SortButtons;
+}(_react2.default.Component);
+
+exports.default = SortButtons;
 
 /***/ })
 /******/ ]);

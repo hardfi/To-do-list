@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FlipMove from 'react-flip-move';
-import Weather from './weather/Weather.jsx'
+import Weather from './Weather/Weather.jsx'
+import SingleTask from './Task/Task.jsx'
+import AddTaskBar from './AddTask/AddTask.jsx'
+import SecretButtons from './SecretButtons/SecretButtons.jsx'
+import SortButtons from './SortButtons/SortButtons.jsx'
 
 let counterName = 0,
     counterDone = 0,
@@ -273,93 +277,6 @@ class ToDoList extends React.Component{
   }
 }
 
-class AddTaskBar extends React.Component{
-  render(){
-
-    let spanClass = 'wrong';
-    if (this.props.input.length < 4 || this.props.input.length > 60) {
-      spanClass = 'wrong';
-    } else {
-      spanClass = 'right';
-    }
-
-    let errorClass = '';
-    if (this.props.inputError) {
-      errorClass = "error";
-    } else {
-      errorClass = "noerror";
-    }
-
-    return (
-      <div className='form-inside'>
-        <div className={errorClass}>Zadanie musi mieć od 4 do 60 znaków.</div>
-        <span className={spanClass}>{this.props.input.length}</span>
-        <h2>nowe zadanie:</h2>
-        <input
-          type='text'
-          onChange={this.props.inputText}
-          value={this.props.input}
-          onKeyPress={e => this.props.enterKeyPress(e)}/>
-        <h2>ważne?</h2>
-        <div
-          onClick={this.props.classToggle}
-          className={this.props.checkbox ? 'checked' : 'unchecked'}>
-        </div>
-        <div className='button-add'
-          onClick={this.props.addTask}>
-          Dodaj</div>
-      </div>
-    )
-  }
-}
-
-class SingleTask extends React.Component{
-
-  render(){
-
-  let task = this.props.task;
-
-    return (
-      <li key={task.id} className={`${task.done} ${task.urgent}`}>
-        <h3 className='button-done' onClick={()=>this.props.clickDone(task.id)}>- {task.name}</h3>
-        <div className='buttons'>
-          <h5 className='button-urgent' onClick={()=>this.props.clickUrgent(task.id)}>ważne!</h5>
-          <h5 className='button-delete' onClick={()=>this.props.clickDelete(task.id)}>usuń</h5>
-        </div>
-      </li>
-    )
-  }
-}
-
-class SortButtons extends React.Component{
-  render(){
-
-    if (this.props.list.length > 1) {
-      return (
-        <div className='sort-buttons'>
-          <h3>Sortuj zadania:</h3>
-          <div className='buttonRegural' onClick={this.props.sortByTitle} >Nazwa</div>
-          <div className='buttonRegural' onClick={this.props.sortByDone} >Wykonane</div>
-          <div className='buttonRegural' onClick={this.props.sortByUrgent} >Ważne</div>
-        </div>
-      )
-    } else {
-      return null
-    }
-  }
-}
-
-class SecretButtons extends React.Component {
-  render(){
-    return (
-      <div className='secretButtons'>
-        <div className='secretOne' onClick={this.props.slide} ></div>
-        <div className='secretTwo' onClick={this.props.backgroundChange} ></div>
-      </div>
-    )
-  }
-}
-
 class App extends React.Component{
   render(){
     return (
@@ -367,7 +284,6 @@ class App extends React.Component{
         <ToDoList />
       </div>
     )
-
   }
 }
 
