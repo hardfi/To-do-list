@@ -23,7 +23,7 @@ class Weather extends React.Component{
         return this.setState({
           weather: data,
           error: '',
-          city: data.name,
+          city: city,
           input: ''
         }, () => this.saveCityToLocalStorage()); // after updating city in state, city is saved to local storage
       }
@@ -31,7 +31,7 @@ class Weather extends React.Component{
   }
 
   componentWillMount() {
-    let city = JSON.parse(localStorage.getItem('city')) || 'Wroclaw';
+    let city = JSON.parse(localStorage.getItem('city')) || 'Wrocław';
     this.updateWeather(city);
     this.setState({
       city: city
@@ -67,7 +67,8 @@ class Weather extends React.Component{
     let object = this.state.weather;
     if (object) {
       let temp = Math.round(object.main.temp);
-      let pressure = Math.round(object.main.pressure)
+      let pressure = Math.round(object.main.pressure);
+      let speed = Math.round(object.wind.speed);
       return (
         <div className='weather'>
           <div className={this.state.error == '' ? 'noerror' : 'error'}>{this.state.error}</div>
@@ -80,7 +81,7 @@ class Weather extends React.Component{
             <h2>{object.weather[0].description}</h2>
             <h3>Temperatura: {temp}&#176;C </h3>
             <h3>Ciśnienie: {pressure} hPa</h3>
-            <h3>Wiatr: {object.wind.speed} m/s</h3>
+            <h3>Wiatr: {speed} m/s</h3>
           </div>
           <div className='form'>
             <input
