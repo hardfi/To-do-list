@@ -129,8 +129,9 @@ body, #app {
   height: 230px;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 5px;
   color: $color-main;
 
   &>h2 {

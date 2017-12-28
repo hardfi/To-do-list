@@ -143,7 +143,7 @@ body, #app {
     }
 
     .icon {
-      margin: 10px auto 10px;
+      margin: 0 auto;
       width: 128px;
       height: 128px;
     }
@@ -152,8 +152,8 @@ body, #app {
       text-align: center;
 
       h2 {
-        margin-bottom: 10px;
         width: 245px;
+        margin-bottom: 10px;
         word-break: break-word;
       }
     }
@@ -162,8 +162,6 @@ body, #app {
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: absolute;
-      bottom: 118px;
 
       input {
         margin: 20px 0 10px 0;
