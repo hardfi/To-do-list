@@ -720,26 +720,27 @@ input {
       margin-bottom: -30px;
       margin-left: 40px; }
     .weather .icon {
-      margin-left: 15px;
+      margin-left: 20px;
       width: 128px;
       height: 128px; }
     .weather .data {
-      text-align: center;
-      margin-top: 10px; }
+      margin-right: 4%;
+      max-width: 220px;
+      margin-left: 5%; }
       .weather .data h2 {
         margin-bottom: 4px;
-        width: 245px;
         word-break: break-word; }
     .weather .form {
       display: flex;
-      width: 90%;
-      justify-content: space-evenly;
-      margin: -25px 0 0px 0;
+      justify-content: space-around;
+      margin: -25px 0 0 0;
       height: 30px; }
       .weather .form input {
-        text-align: center; }
+        text-align: center;
+        width: 220px; }
       .weather .form .button-add {
-        width: 130px; }
+        width: 140px;
+        margin-left: 20px; }
   .paper {
     transform: rotate(1deg);
     background: url("../img/124.png");
